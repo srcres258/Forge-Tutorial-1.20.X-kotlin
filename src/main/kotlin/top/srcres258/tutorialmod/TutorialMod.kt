@@ -11,6 +11,7 @@ import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import thedarkcolour.kotlinforforge.forge.MOD_BUS
 import thedarkcolour.kotlinforforge.forge.runWhenOn
+import top.srcres258.tutorialmod.block.ModBlocks
 import top.srcres258.tutorialmod.item.ModCreativeModeTab
 import top.srcres258.tutorialmod.item.ModItems
 
@@ -33,6 +34,7 @@ object TutorialMod {
 
         ModCreativeModeTab.register(MOD_BUS)
         ModItems.register(MOD_BUS)
+        ModBlocks.register(MOD_BUS)
 
         MOD_BUS.addListener(TutorialMod::commonSetup)
         runWhenOn(Dist.CLIENT) {
