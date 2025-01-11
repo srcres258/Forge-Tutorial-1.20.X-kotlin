@@ -31,6 +31,11 @@ object ModCreativeModeTab {
                 run {
                     output.accept(ModBlocks.SAPPHIRE_BLOCK.get())
                     output.accept(ModBlocks.RAW_SAPPHIRE_BLOCK.get())
+
+                    output.accept(ModBlocks.SAPPHIRE_ORE.get())
+                    output.accept(ModBlocks.DEEPSLATE_SAPPHIRE_ORE.get())
+                    output.accept(ModBlocks.NETHER_SAPPHIRE_ORE.get())
+                    output.accept(ModBlocks.END_STONE_SAPPHIRE_ORE.get())
                 }
             }
             .build()
