@@ -41,5 +41,12 @@ class ModBlockTagGenerator(
 
         tag(Tags.Blocks.NEEDS_NETHERITE_TOOL)
             .add(ModBlocks.END_STONE_SAPPHIRE_ORE.get())
+
+        tag(BlockTags.FENCES)
+            .add(ModBlocks.SAPPHIRE_FENCE.get())
+        tag(BlockTags.FENCE_GATES)
+            .add(ModBlocks.SAPPHIRE_FENCE_GATE.get())
+        tag(BlockTags.WALLS)
+            .add(ModBlocks.SAPPHIRE_WALL.get())
     }
 }

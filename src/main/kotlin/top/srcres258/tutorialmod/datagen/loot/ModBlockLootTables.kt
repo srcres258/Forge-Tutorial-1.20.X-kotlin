@@ -31,6 +31,21 @@ class ModBlockLootTables : BlockLootSubProvider(setOf(), FeatureFlags.REGISTRY.a
         add(ModBlocks.END_STONE_SAPPHIRE_ORE.get()) {
             createCopperLikeOreDrops(ModBlocks.END_STONE_SAPPHIRE_ORE.get(), ModItems.RAW_SAPPHIRE.get())
         }
+
+        dropSelf(ModBlocks.SAPPHIRE_STAIRS.get())
+        dropSelf(ModBlocks.SAPPHIRE_BUTTON.get())
+        dropSelf(ModBlocks.SAPPHIRE_PRESSURE_PLATE.get())
+        dropSelf(ModBlocks.SAPPHIRE_TRAPDOOR.get())
+        dropSelf(ModBlocks.SAPPHIRE_FENCE.get())
+        dropSelf(ModBlocks.SAPPHIRE_FENCE_GATE.get())
+        dropSelf(ModBlocks.SAPPHIRE_WALL.get())
+
+        add(ModBlocks.SAPPHIRE_SLAB.get()) {
+            createSlabItemTable(ModBlocks.SAPPHIRE_SLAB.get())
+        }
+        add(ModBlocks.SAPPHIRE_DOOR.get()) {
+            createDoorTable(ModBlocks.SAPPHIRE_DOOR.get())
+        }
     }
 
     private fun createCopperLikeOreDrops(block: Block, item: Item) =

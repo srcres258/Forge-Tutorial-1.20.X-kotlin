@@ -1,13 +1,24 @@
 package top.srcres258.tutorialmod.block
 
+import net.minecraft.sounds.SoundEvents
 import net.minecraft.util.valueproviders.UniformInt
 import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.Item
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
+import net.minecraft.world.level.block.ButtonBlock
+import net.minecraft.world.level.block.DoorBlock
 import net.minecraft.world.level.block.DropExperienceBlock
+import net.minecraft.world.level.block.FenceBlock
+import net.minecraft.world.level.block.FenceGateBlock
+import net.minecraft.world.level.block.PressurePlateBlock
+import net.minecraft.world.level.block.SlabBlock
 import net.minecraft.world.level.block.SoundType
+import net.minecraft.world.level.block.StairBlock
+import net.minecraft.world.level.block.TrapDoorBlock
+import net.minecraft.world.level.block.WallBlock
 import net.minecraft.world.level.block.state.BlockBehaviour
+import net.minecraft.world.level.block.state.properties.BlockSetType
 import net.minecraftforge.eventbus.api.IEventBus
 import net.minecraftforge.registries.DeferredRegister
 import net.minecraftforge.registries.ForgeRegistries
@@ -19,16 +30,16 @@ import top.srcres258.tutorialmod.item.ModItems
 object ModBlocks {
     val BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, TutorialMod.MOD_ID)
 
-    val SAPPHIRE_BLOCK = registerBlock("sapphire_block") {
+    val SAPPHIRE_BLOCK: RegistryObject<Block> = registerBlock("sapphire_block") {
         Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
             .sound(SoundType.AMETHYST))
     }
-    val RAW_SAPPHIRE_BLOCK = registerBlock("raw_sapphire_block") {
+    val RAW_SAPPHIRE_BLOCK: RegistryObject<Block> = registerBlock("raw_sapphire_block") {
         Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
             .sound(SoundType.AMETHYST))
     }
 
-    val SAPPHIRE_ORE = registerBlock("sapphire_ore") {
+    val SAPPHIRE_ORE: RegistryObject<Block> = registerBlock("sapphire_ore") {
         DropExperienceBlock(
             BlockBehaviour.Properties.copy(Blocks.STONE)
                 .strength(2F)
@@ -36,7 +47,7 @@ object ModBlocks {
             UniformInt.of(3, 6)
         )
     }
-    val DEEPSLATE_SAPPHIRE_ORE = registerBlock("deepslate_sapphire_ore") {
+    val DEEPSLATE_SAPPHIRE_ORE: RegistryObject<Block> = registerBlock("deepslate_sapphire_ore") {
         DropExperienceBlock(
             BlockBehaviour.Properties.copy(Blocks.DEEPSLATE)
                 .strength(3F)
@@ -44,7 +55,7 @@ object ModBlocks {
             UniformInt.of(3, 7)
         )
     }
-    val NETHER_SAPPHIRE_ORE = registerBlock("nether_sapphire_ore") {
+    val NETHER_SAPPHIRE_ORE: RegistryObject<Block> = registerBlock("nether_sapphire_ore") {
         DropExperienceBlock(
             BlockBehaviour.Properties.copy(Blocks.NETHERRACK)
                 .strength(5F)
@@ -52,7 +63,7 @@ object ModBlocks {
             UniformInt.of(3, 7)
         )
     }
-    val END_STONE_SAPPHIRE_ORE = registerBlock("end_stone_sapphire_ore") {
+    val END_STONE_SAPPHIRE_ORE: RegistryObject<Block> = registerBlock("end_stone_sapphire_ore") {
         DropExperienceBlock(
             BlockBehaviour.Properties.copy(Blocks.END_STONE)
                 .strength(5F)
@@ -61,8 +72,72 @@ object ModBlocks {
         )
     }
 
-    val SOUND_BLOCK = registerBlock("sound_block") {
+    val SOUND_BLOCK: RegistryObject<Block> = registerBlock("sound_block") {
         SoundBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK))
+    }
+
+    val SAPPHIRE_STAIRS: RegistryObject<Block> = registerBlock("sapphire_stairs") {
+        StairBlock(
+            { SAPPHIRE_BLOCK.get().defaultBlockState() },
+            BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+                .sound(SoundType.AMETHYST)
+        )
+    }
+    val SAPPHIRE_SLAB: RegistryObject<Block> = registerBlock("sapphire_slab") {
+        SlabBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+                .sound(SoundType.AMETHYST))
+    }
+
+    val SAPPHIRE_BUTTON: RegistryObject<Block> = registerBlock("sapphire_button") {
+        ButtonBlock(
+            BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON)
+                .sound(SoundType.AMETHYST),
+            BlockSetType.IRON,
+            10,
+            true
+        )
+    }
+    val SAPPHIRE_PRESSURE_PLATE: RegistryObject<Block> = registerBlock("sapphire_pressure_plate") {
+        PressurePlateBlock(
+            PressurePlateBlock.Sensitivity.EVERYTHING,
+            BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+                .sound(SoundType.AMETHYST),
+            BlockSetType.IRON
+        )
+    }
+
+    val SAPPHIRE_FENCE: RegistryObject<Block> = registerBlock("sapphire_fence") {
+        FenceBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+            .sound(SoundType.AMETHYST))
+    }
+    val SAPPHIRE_FENCE_GATE: RegistryObject<Block> = registerBlock("sapphire_fence_gate") {
+        FenceGateBlock(
+            BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+                .sound(SoundType.AMETHYST),
+            SoundEvents.CHAIN_PLACE,
+            SoundEvents.ANVIL_BREAK
+        )
+    }
+    val SAPPHIRE_WALL: RegistryObject<Block> = registerBlock("sapphire_wall") {
+        WallBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+            .sound(SoundType.AMETHYST))
+    }
+
+    val SAPPHIRE_DOOR: RegistryObject<Block> = registerBlock("sapphire_door") {
+        DoorBlock(
+            BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+                .sound(SoundType.AMETHYST)
+                .noOcclusion(),
+            BlockSetType.IRON
+        )
+    }
+    val SAPPHIRE_TRAPDOOR: RegistryObject<Block> = registerBlock("sapphire_trapdoor") {
+        TrapDoorBlock(
+            BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+                .sound(SoundType.AMETHYST)
+                .noOcclusion(),
+            BlockSetType.IRON
+        )
     }
 
     private fun <T: Block> registerBlock(
