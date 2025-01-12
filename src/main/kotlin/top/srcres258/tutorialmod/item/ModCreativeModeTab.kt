@@ -21,9 +21,13 @@ object ModCreativeModeTab {
             .displayItems { _, output ->
                 // items
                 run {
+                    // mod
                     output.accept(ModItems.SAPPHIRE)
                     output.accept(ModItems.RAW_SAPPHIRE)
 
+                    output.accept(ModItems.METAL_DETECTOR)
+
+                    // vanilla
                     output.accept(Items.DIAMOND)
                 }
 
