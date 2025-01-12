@@ -22,6 +22,10 @@ object ModItems {
         MetalDetectorItem(Item.Properties().durability(100))
     }
 
+    val STRAWBERRY by ITEMS.registerObject("strawberry") {
+        Item(Item.Properties().food(ModFoods.STRAWBERRY))
+    }
+
     fun register(eventBus: IEventBus) {
         ITEMS.register(eventBus)
     }

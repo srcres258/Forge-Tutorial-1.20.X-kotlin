@@ -27,6 +27,8 @@ object ModCreativeModeTab {
 
                     output.accept(ModItems.METAL_DETECTOR)
 
+                    output.accept(ModItems.STRAWBERRY)
+
                     // vanilla
                     output.accept(Items.DIAMOND)
                 }
