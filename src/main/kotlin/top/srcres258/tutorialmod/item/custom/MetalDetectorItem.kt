@@ -11,8 +11,8 @@ import net.minecraft.world.item.TooltipFlag
 import net.minecraft.world.item.context.UseOnContext
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.Block
-import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.state.BlockState
+import top.srcres258.tutorialmod.util.ModTags
 
 class MetalDetectorItem(pProperties: Properties) : Item(pProperties) {
     override fun useOn(pContext: UseOnContext): InteractionResult {
@@ -62,4 +62,4 @@ private fun outputValuableCoordinates(blockPos: BlockPos, player: Player, block:
 }
 
 private fun isValuableBlock(state: BlockState) =
-    state.`is`(Blocks.IRON_ORE) || state.`is`(Blocks.DIAMOND_ORE)
+    state.`is`(ModTags.Blocks.METAL_DETECTOR_VALUABLES)
