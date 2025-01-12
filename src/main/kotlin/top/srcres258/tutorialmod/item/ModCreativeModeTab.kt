@@ -29,6 +29,8 @@ object ModCreativeModeTab {
 
                     output.accept(ModItems.STRAWBERRY)
 
+                    output.accept(ModItems.PINE_CONE)
+
                     // vanilla
                     output.accept(Items.DIAMOND)
                 }

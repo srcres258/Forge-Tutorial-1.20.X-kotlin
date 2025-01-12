@@ -6,6 +6,7 @@ import net.minecraftforge.registries.DeferredRegister
 import net.minecraftforge.registries.ForgeRegistries
 import thedarkcolour.kotlinforforge.forge.registerObject
 import top.srcres258.tutorialmod.TutorialMod
+import top.srcres258.tutorialmod.item.custom.FuelItem
 import top.srcres258.tutorialmod.item.custom.MetalDetectorItem
 
 object ModItems {
@@ -24,6 +25,10 @@ object ModItems {
 
     val STRAWBERRY by ITEMS.registerObject("strawberry") {
         Item(Item.Properties().food(ModFoods.STRAWBERRY))
+    }
+
+    val PINE_CONE by ITEMS.registerObject("pine_cone") {
+        FuelItem(Item.Properties(), 400)
     }
 
     fun register(eventBus: IEventBus) {
