@@ -16,20 +16,20 @@ object ModCreativeModeTab {
 
     val TUTORIAL_TAB by CREATIVE_MODE_TABS.registerObject("tutorial_tab") {
         CreativeModeTab.builder()
-            .icon { ItemStack(ModItems.SAPPHIRE) }
+            .icon { ItemStack(ModItems.SAPPHIRE.get()) }
             .title(Component.translatable("creativetab.tutorial_tab"))
             .displayItems { _, output ->
                 // items
                 run {
                     // mod
-                    output.accept(ModItems.SAPPHIRE)
-                    output.accept(ModItems.RAW_SAPPHIRE)
+                    output.accept(ModItems.SAPPHIRE.get())
+                    output.accept(ModItems.RAW_SAPPHIRE.get())
 
-                    output.accept(ModItems.METAL_DETECTOR)
+                    output.accept(ModItems.METAL_DETECTOR.get())
 
-                    output.accept(ModItems.STRAWBERRY)
+                    output.accept(ModItems.STRAWBERRY.get())
 
-                    output.accept(ModItems.PINE_CONE)
+                    output.accept(ModItems.PINE_CONE.get())
 
                     // vanilla
                     output.accept(Items.DIAMOND)
