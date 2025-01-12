@@ -13,6 +13,7 @@ import net.minecraftforge.registries.DeferredRegister
 import net.minecraftforge.registries.ForgeRegistries
 import net.minecraftforge.registries.RegistryObject
 import top.srcres258.tutorialmod.TutorialMod
+import top.srcres258.tutorialmod.block.custom.SoundBlock
 import top.srcres258.tutorialmod.item.ModItems
 
 object ModBlocks {
@@ -58,6 +59,10 @@ object ModBlocks {
                 .requiresCorrectToolForDrops(),
             UniformInt.of(3, 7)
         )
+    }
+
+    val SOUND_BLOCK = registerBlock("sound_block") {
+        SoundBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK))
     }
 
     private fun <T: Block> registerBlock(
