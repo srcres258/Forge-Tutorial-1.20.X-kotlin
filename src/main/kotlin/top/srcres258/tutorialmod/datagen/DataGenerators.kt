@@ -24,5 +24,7 @@ object DataGenerators {
             ModBlockTagGenerator(packOutput, lookupProvider, existingFileHelper))
         generator.addProvider(event.includeServer(), ModItemTagGenerator(packOutput, lookupProvider,
             blockTagGenerator.contentsGetter(), existingFileHelper))
+
+        generator.addProvider(event.includeServer(), ModGlobalLootModifiersProvider(packOutput))
     }
 }

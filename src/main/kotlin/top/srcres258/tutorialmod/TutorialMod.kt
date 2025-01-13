@@ -16,6 +16,7 @@ import thedarkcolour.kotlinforforge.forge.MOD_BUS
 import top.srcres258.tutorialmod.block.ModBlocks
 import top.srcres258.tutorialmod.item.ModCreativeModeTab
 import top.srcres258.tutorialmod.item.ModItems
+import top.srcres258.tutorialmod.loot.ModLootModifiers
 
 /**
  * Main mod class. Should be an `object` declaration annotated with `@Mod`.
@@ -37,6 +38,7 @@ object TutorialMod {
         ModCreativeModeTab.register(MOD_BUS)
         ModItems.register(MOD_BUS)
         ModBlocks.register(MOD_BUS)
+        ModLootModifiers.register(MOD_BUS)
 
         MOD_BUS.addListener(TutorialMod::commonSetup)
         MinecraftForge.EVENT_BUS.register(this)
