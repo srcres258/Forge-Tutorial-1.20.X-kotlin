@@ -14,6 +14,7 @@ import net.minecraftforge.registries.RegistryObject
 import top.srcres258.tutorialmod.TutorialMod
 import top.srcres258.tutorialmod.item.custom.FuelItem
 import top.srcres258.tutorialmod.item.custom.MetalDetectorItem
+import top.srcres258.tutorialmod.item.custom.ModArmorItem
 
 object ModItems {
     val ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, TutorialMod.MOD_ID)
@@ -58,7 +59,7 @@ object ModItems {
     }
 
     val SAPPHIRE_HELMET: RegistryObject<Item> = ITEMS.register("sapphire_helmet") {
-        ArmorItem(ModArmorMaterials.SAPPHIRE, ArmorItem.Type.HELMET, Item.Properties())
+        ModArmorItem(ModArmorMaterials.SAPPHIRE, ArmorItem.Type.HELMET, Item.Properties())
     }
     val SAPPHIRE_CHESTPLATE: RegistryObject<Item> = ITEMS.register("sapphire_chestplate") {
         ArmorItem(ModArmorMaterials.SAPPHIRE, ArmorItem.Type.CHESTPLATE, Item.Properties())

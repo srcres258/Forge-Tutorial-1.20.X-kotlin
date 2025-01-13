@@ -19,7 +19,7 @@ import top.srcres258.tutorialmod.TutorialMod
 import top.srcres258.tutorialmod.block.ModBlocks
 import top.srcres258.tutorialmod.item.ModItems
 
-val trimMaterials = linkedMapOf<ResourceKey<TrimMaterial>, Float>(
+private val trimMaterials = linkedMapOf<ResourceKey<TrimMaterial>, Float>(
     Pair(TrimMaterials.QUARTZ, 0.1F),
     Pair(TrimMaterials.IRON, 0.2F),
     Pair(TrimMaterials.NETHERITE, 0.3F),
