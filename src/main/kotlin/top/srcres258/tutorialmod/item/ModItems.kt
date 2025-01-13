@@ -6,6 +6,7 @@ import net.minecraft.world.item.HoeItem
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemNameBlockItem
 import net.minecraft.world.item.PickaxeItem
+import net.minecraft.world.item.RecordItem
 import net.minecraft.world.item.ShovelItem
 import net.minecraft.world.item.SwordItem
 import net.minecraftforge.eventbus.api.IEventBus
@@ -17,6 +18,7 @@ import top.srcres258.tutorialmod.block.ModBlocks
 import top.srcres258.tutorialmod.item.custom.FuelItem
 import top.srcres258.tutorialmod.item.custom.MetalDetectorItem
 import top.srcres258.tutorialmod.item.custom.ModArmorItem
+import top.srcres258.tutorialmod.sound.ModSounds
 
 object ModItems {
     val ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, TutorialMod.MOD_ID)
@@ -82,6 +84,10 @@ object ModItems {
     }
     val CORN: RegistryObject<Item> = ITEMS.register("corn") {
         Item(Item.Properties())
+    }
+
+    val BAR_BRAWL_MUSIC_DISC: RegistryObject<Item> = ITEMS.register("bar_brawl_music_disc") {
+        RecordItem(6, ModSounds.BAR_BRAWL, Item.Properties().stacksTo(1), 2440)
     }
 
     fun register(eventBus: IEventBus) {

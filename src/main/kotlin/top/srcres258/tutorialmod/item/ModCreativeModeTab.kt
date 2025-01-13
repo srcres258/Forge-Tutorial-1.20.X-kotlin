@@ -49,6 +49,8 @@ object ModCreativeModeTab {
                     output.accept(ModItems.CORN_SEEDS.get())
                     output.accept(ModItems.CORN.get())
 
+                    output.accept(ModItems.BAR_BRAWL_MUSIC_DISC.get())
+
                     // vanilla
                     output.accept(Items.DIAMOND)
                 }

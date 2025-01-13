@@ -21,6 +21,8 @@ object ModSounds {
     val SOUND_BLOCK_PLACE: RegistryObject<SoundEvent> = registerSoundEvents("sound_block_place")
     val SOUND_BLOCK_HIT: RegistryObject<SoundEvent> = registerSoundEvents("sound_block_hit")
 
+    val BAR_BRAWL: RegistryObject<SoundEvent> = registerSoundEvents("bar_brawl")
+
     val SOUND_BLOCK_SOUNDS = ForgeSoundType(1F, 1F,
         SOUND_BLOCK_BREAK, SOUND_BLOCK_STEP, SOUND_BLOCK_PLACE,
         SOUND_BLOCK_HIT, SOUND_BLOCK_FALL)

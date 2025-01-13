@@ -24,5 +24,11 @@ class ModItemTagGenerator(
                 ModItems.SAPPHIRE_LEGGINGS.get(),
                 ModItems.SAPPHIRE_BOOTS.get()
             )
+
+        tag(ItemTags.MUSIC_DISCS)
+            .add(ModItems.BAR_BRAWL_MUSIC_DISC.get())
+
+        tag(ItemTags.CREEPER_DROP_MUSIC_DISCS)
+            .add(ModItems.BAR_BRAWL_MUSIC_DISC.get())
     }
 }
