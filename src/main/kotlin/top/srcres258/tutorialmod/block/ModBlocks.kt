@@ -2,6 +2,7 @@ package top.srcres258.tutorialmod.block
 
 import net.minecraft.sounds.SoundEvents
 import net.minecraft.util.valueproviders.UniformInt
+import net.minecraft.world.effect.MobEffects
 import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.Item
 import net.minecraft.world.level.block.Block
@@ -11,6 +12,8 @@ import net.minecraft.world.level.block.DoorBlock
 import net.minecraft.world.level.block.DropExperienceBlock
 import net.minecraft.world.level.block.FenceBlock
 import net.minecraft.world.level.block.FenceGateBlock
+import net.minecraft.world.level.block.FlowerBlock
+import net.minecraft.world.level.block.FlowerPotBlock
 import net.minecraft.world.level.block.PressurePlateBlock
 import net.minecraft.world.level.block.SlabBlock
 import net.minecraft.world.level.block.SoundType
@@ -152,6 +155,24 @@ object ModBlocks {
         CornCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT)
             .noOcclusion()
             .noCollission())
+    }
+
+    val CATMINT: RegistryObject<Block> = registerBlock("catmint") {
+        FlowerBlock(
+            { MobEffects.LUCK },
+            5,
+            BlockBehaviour.Properties.copy(Blocks.ALLIUM)
+                .noOcclusion()
+                .noCollission()
+        )
+    }
+    val POTTED_CATMINT: RegistryObject<Block> = BLOCKS.register("potted_catmint") {
+        FlowerPotBlock(
+            { Blocks.FLOWER_POT as FlowerPotBlock },
+            CATMINT,
+            BlockBehaviour.Properties.copy(Blocks.POTTED_ALLIUM)
+                .noOcclusion()
+        )
     }
 
     private fun <T: Block> registerBlock(

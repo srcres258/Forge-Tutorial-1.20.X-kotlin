@@ -70,6 +70,8 @@ class ModItemModelProvider(
         trimmedArmorItem(ModItems.SAPPHIRE_CHESTPLATE)
         trimmedArmorItem(ModItems.SAPPHIRE_LEGGINGS)
         trimmedArmorItem(ModItems.SAPPHIRE_BOOTS)
+
+        simpleBlockItemBlockTexture(ModBlocks.CATMINT)
     }
 
     private fun trimmedArmorItem(itemRegObj: RegistryObject<out Item>) {
@@ -155,4 +157,8 @@ class ModItemModelProvider(
     private fun simpleBlockItem(item: RegistryObject<out Block>) =
         withExistingParent(item.id.path, ResourceLocation("item/generated"))
             .texture("layer0", ResourceLocation(TutorialMod.MOD_ID, "item/${item.id.path}"))
+
+    private fun simpleBlockItemBlockTexture(item: RegistryObject<out Block>) =
+        withExistingParent(item.id.path, ResourceLocation("item/generated"))
+            .texture("layer0", ResourceLocation(TutorialMod.MOD_ID, "block/${item.id.path}"))
 }

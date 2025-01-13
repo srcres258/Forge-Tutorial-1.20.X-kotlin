@@ -1,6 +1,8 @@
 package top.srcres258.tutorialmod
 
 import net.minecraft.world.item.CreativeModeTabs
+import net.minecraft.world.level.block.Blocks
+import net.minecraft.world.level.block.FlowerPotBlock
 import net.minecraftforge.api.distmarker.Dist
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent
@@ -45,7 +47,11 @@ object TutorialMod {
         MOD_BUS.addListener(TutorialMod::addCreative)
     }
 
-    private fun commonSetup(event: FMLCommonSetupEvent) {}
+    private fun commonSetup(event: FMLCommonSetupEvent) {
+        event.enqueueWork {
+            (Blocks.FLOWER_POT as FlowerPotBlock).addPlant(ModBlocks.CATMINT.id, ModBlocks.POTTED_CATMINT)
+        }
+    }
 
     private fun addCreative(event: BuildCreativeModeTabContentsEvent) {
         if (event.tabKey == CreativeModeTabs.INGREDIENTS) {

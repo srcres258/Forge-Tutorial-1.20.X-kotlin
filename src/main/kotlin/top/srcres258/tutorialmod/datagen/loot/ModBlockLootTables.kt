@@ -70,6 +70,9 @@ class ModBlockLootTables : BlockLootSubProvider(setOf(), FeatureFlags.REGISTRY.a
                 add(ModBlocks.CORN_CROP.get(), createCropDrops(ModBlocks.CORN_CROP.get(), ModItems.CORN.get(),
                     ModItems.CORN_SEEDS.get(), builder))
             }
+
+        dropSelf(ModBlocks.CATMINT.get())
+        add(ModBlocks.POTTED_CATMINT.get(), createPotFlowerItemTable(ModBlocks.CATMINT.get()))
     }
 
     private fun createCopperLikeOreDrops(block: Block, item: Item) =

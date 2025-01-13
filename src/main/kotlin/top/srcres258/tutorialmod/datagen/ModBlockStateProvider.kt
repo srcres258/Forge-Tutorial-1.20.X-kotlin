@@ -58,6 +58,20 @@ class ModBlockStateProvider(
             "strawberry_stage", "strawberry_stage")
         makeCornCrop(ModBlocks.CORN_CROP.get() as CornCropBlock,
             "corn_stage_", "corn_stage_")
+
+        simpleBlockWithItem(
+            ModBlocks.CATMINT.get(),
+            models()
+                .cross(blockTexture(ModBlocks.CATMINT.get()).path, blockTexture(ModBlocks.CATMINT.get()))
+                .renderType("cutout")
+        )
+        simpleBlockWithItem(
+            ModBlocks.POTTED_CATMINT.get(),
+            models()
+                .singleTexture("potted_catmint", ResourceLocation("flower_pot_cross"), "plant",
+                    blockTexture(ModBlocks.CATMINT.get()))
+                .renderType("cutout")
+        )
     }
 
     private fun makeStrawberryCrop(
