@@ -44,6 +44,8 @@ class ModItemModelProvider(
         simpleItem(ModItems.PINE_CONE)
         simpleItem(ModItems.STRAWBERRY)
         simpleItem(ModItems.STRAWBERRY_SEEDS)
+        simpleItem(ModItems.CORN)
+        simpleItem(ModItems.CORN_SEEDS)
 
         simpleBlockItem(ModBlocks.SAPPHIRE_DOOR)
 

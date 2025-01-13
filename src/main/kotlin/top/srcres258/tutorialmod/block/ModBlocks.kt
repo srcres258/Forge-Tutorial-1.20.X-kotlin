@@ -24,6 +24,7 @@ import net.minecraftforge.registries.DeferredRegister
 import net.minecraftforge.registries.ForgeRegistries
 import net.minecraftforge.registries.RegistryObject
 import top.srcres258.tutorialmod.TutorialMod
+import top.srcres258.tutorialmod.block.custom.CornCropBlock
 import top.srcres258.tutorialmod.block.custom.SoundBlock
 import top.srcres258.tutorialmod.block.custom.StrawberryCropBlock
 import top.srcres258.tutorialmod.item.ModItems
@@ -143,6 +144,12 @@ object ModBlocks {
 
     val STRAWBERRY_CROP: RegistryObject<Block> = BLOCKS.register("strawberry_crop") {
         StrawberryCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT)
+            .noOcclusion()
+            .noCollission())
+    }
+
+    val CORN_CROP: RegistryObject<Block> = BLOCKS.register("corn_crop") {
+        CornCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT)
             .noOcclusion()
             .noCollission())
     }

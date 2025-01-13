@@ -10,6 +10,7 @@ import net.minecraftforge.common.data.ExistingFileHelper
 import net.minecraftforge.registries.RegistryObject
 import top.srcres258.tutorialmod.TutorialMod
 import top.srcres258.tutorialmod.block.ModBlocks
+import top.srcres258.tutorialmod.block.custom.CornCropBlock
 import top.srcres258.tutorialmod.block.custom.StrawberryCropBlock
 
 class ModBlockStateProvider(
@@ -55,6 +56,8 @@ class ModBlockStateProvider(
 
         makeStrawberryCrop(ModBlocks.STRAWBERRY_CROP.get() as StrawberryCropBlock,
             "strawberry_stage", "strawberry_stage")
+        makeCornCrop(ModBlocks.CORN_CROP.get() as CornCropBlock,
+            "corn_stage_", "corn_stage_")
     }
 
     private fun makeStrawberryCrop(
@@ -72,10 +75,34 @@ class ModBlockStateProvider(
         block: StrawberryCropBlock,
         modelName: String,
         textureName: String
-    ) = arrayOf(ConfiguredModel(models()
-        .crop("$modelName${state.getValue(block.ageProperty)}",
-            ResourceLocation(TutorialMod.MOD_ID, "block/$textureName${state.getValue(block.ageProperty)}"))
-        .renderType("cutout")))
+    ) = arrayOf(ConfiguredModel(
+        models()
+            .crop("$modelName${state.getValue(block.ageProperty)}",
+                ResourceLocation(TutorialMod.MOD_ID, "block/$textureName${state.getValue(block.ageProperty)}"))
+            .renderType("cutout")
+    ))
+
+    private fun makeCornCrop(
+        block: CornCropBlock,
+        modelName: String,
+        textureName: String
+    ) {
+        getVariantBuilder(block).forAllStates { state ->
+            cornStates(state, block, modelName, textureName)
+        }
+    }
+
+    private fun cornStates(
+        state: BlockState,
+        block: CornCropBlock,
+        modelName: String,
+        textureName: String
+    ) = arrayOf(ConfiguredModel(
+        models()
+            .crop("$modelName${state.getValue(block.ageProperty)}",
+                ResourceLocation(TutorialMod.MOD_ID, "block/$textureName${state.getValue(block.ageProperty)}"))
+            .renderType("cutout")
+    ))
 
     private fun blockWithItem(blockRegistryObject: RegistryObject<out Block>) {
         simpleBlockWithItem(blockRegistryObject.get(), cubeAll(blockRegistryObject.get()))

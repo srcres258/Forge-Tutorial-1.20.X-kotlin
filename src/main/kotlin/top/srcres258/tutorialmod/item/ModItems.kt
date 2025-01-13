@@ -77,6 +77,13 @@ object ModItems {
         ItemNameBlockItem(ModBlocks.STRAWBERRY_CROP.get(), Item.Properties())
     }
 
+    val CORN_SEEDS: RegistryObject<Item> = ITEMS.register("corn_seeds") {
+        ItemNameBlockItem(ModBlocks.CORN_CROP.get(), Item.Properties())
+    }
+    val CORN: RegistryObject<Item> = ITEMS.register("corn") {
+        Item(Item.Properties())
+    }
+
     fun register(eventBus: IEventBus) {
         ITEMS.register(eventBus)
     }

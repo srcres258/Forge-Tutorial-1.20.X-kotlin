@@ -46,6 +46,9 @@ object ModCreativeModeTab {
 
                     output.accept(ModItems.STRAWBERRY_SEEDS.get())
 
+                    output.accept(ModItems.CORN_SEEDS.get())
+                    output.accept(ModItems.CORN.get())
+
                     // vanilla
                     output.accept(Items.DIAMOND)
                 }
