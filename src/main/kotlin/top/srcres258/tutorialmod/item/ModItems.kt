@@ -31,6 +31,10 @@ object ModItems {
         FuelItem(Item.Properties(), 400)
     }
 
+    val SAPPHIRE_STAFF: RegistryObject<Item> = ITEMS.register("sapphire_staff") {
+        Item(Item.Properties().stacksTo(1))
+    }
+
     fun register(eventBus: IEventBus) {
         ITEMS.register(eventBus)
     }

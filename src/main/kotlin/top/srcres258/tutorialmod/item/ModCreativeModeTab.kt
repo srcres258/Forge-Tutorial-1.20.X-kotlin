@@ -31,6 +31,8 @@ object ModCreativeModeTab {
 
                     output.accept(ModItems.PINE_CONE.get())
 
+                    output.accept(ModItems.SAPPHIRE_STAFF.get())
+
                     // vanilla
                     output.accept(Items.DIAMOND)
                 }
