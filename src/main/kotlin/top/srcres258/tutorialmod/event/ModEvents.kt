@@ -12,7 +12,9 @@ import net.minecraftforge.event.village.WandererTradesEvent
 import net.minecraftforge.eventbus.api.SubscribeEvent
 import net.minecraftforge.fml.common.Mod
 import top.srcres258.tutorialmod.TutorialMod
+import top.srcres258.tutorialmod.block.ModBlocks
 import top.srcres258.tutorialmod.item.ModItems
+import top.srcres258.tutorialmod.villager.ModVillagers
 
 @Mod.EventBusSubscriber(modid = TutorialMod.MOD_ID)
 object ModEvents {
@@ -60,6 +62,26 @@ object ModEvents {
                         ItemStack(Items.EMERALD, 32),
                         enchantedBook,
                         2, 8, 0.02F
+                    )
+                }
+            }
+
+            ModVillagers.SOUND_MASTER.get() -> {
+                // Level 1
+                trades.get(1).add { _, _ ->
+                    MerchantOffer(
+                        ItemStack(Items.EMERALD, 16),
+                        ItemStack(ModBlocks.SOUND_BLOCK.get(), 1),
+                        16, 8, 0.02F
+                    )
+                }
+
+                // Level 2
+                trades.get(2).add { _, _ ->
+                    MerchantOffer(
+                        ItemStack(Items.EMERALD, 6),
+                        ItemStack(ModBlocks.SAPPHIRE_ORE.get(), 2),
+                        5, 12, 0.02F
                     )
                 }
             }
