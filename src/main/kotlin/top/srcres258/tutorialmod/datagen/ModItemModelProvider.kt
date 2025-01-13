@@ -36,6 +36,12 @@ class ModItemModelProvider(
         evenSimplerBlockItem(ModBlocks.SAPPHIRE_FENCE_GATE)
 
         trapdoorItem(ModBlocks.SAPPHIRE_TRAPDOOR)
+
+        handheldItem(ModItems.SAPPHIRE_SWORD)
+        handheldItem(ModItems.SAPPHIRE_PICKAXE)
+        handheldItem(ModItems.SAPPHIRE_AXE)
+        handheldItem(ModItems.SAPPHIRE_SHOVEL)
+        handheldItem(ModItems.SAPPHIRE_HOE)
     }
 
     private fun simpleItem(item: RegistryObject<out Item>) =
@@ -72,6 +78,10 @@ class ModItemModelProvider(
             .texture("wall", ResourceLocation(TutorialMod.MOD_ID,
                 "block/${ForgeRegistries.BLOCKS.getKey(baseBlock.get())!!.path}"))
     }
+
+    private fun handheldItem(item: RegistryObject<out Item>) =
+        withExistingParent(item.id.path, ResourceLocation("item/handheld"))
+            .texture("layer0", ResourceLocation(TutorialMod.MOD_ID, "item/${item.id.path}"))
 
     private fun simpleBlockItem(item: RegistryObject<out Block>) =
         withExistingParent(item.id.path, ResourceLocation("item/generated"))
