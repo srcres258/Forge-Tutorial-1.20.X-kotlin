@@ -44,6 +44,8 @@ object ModCreativeModeTab {
                     output.accept(ModItems.SAPPHIRE_LEGGINGS.get())
                     output.accept(ModItems.SAPPHIRE_BOOTS.get())
 
+                    output.accept(ModItems.STRAWBERRY_SEEDS.get())
+
                     // vanilla
                     output.accept(Items.DIAMOND)
                 }

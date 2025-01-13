@@ -1,12 +1,16 @@
 package top.srcres258.tutorialmod.datagen
 
 import net.minecraft.data.PackOutput
+import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.level.block.*
+import net.minecraft.world.level.block.state.BlockState
 import net.minecraftforge.client.model.generators.BlockStateProvider
+import net.minecraftforge.client.model.generators.ConfiguredModel
 import net.minecraftforge.common.data.ExistingFileHelper
 import net.minecraftforge.registries.RegistryObject
 import top.srcres258.tutorialmod.TutorialMod
 import top.srcres258.tutorialmod.block.ModBlocks
+import top.srcres258.tutorialmod.block.custom.StrawberryCropBlock
 
 class ModBlockStateProvider(
     output: PackOutput,
@@ -48,7 +52,30 @@ class ModBlockStateProvider(
             modLoc("block/sapphire_trapdoor"),
             true,
             "cutout")
+
+        makeStrawberryCrop(ModBlocks.STRAWBERRY_CROP.get() as StrawberryCropBlock,
+            "strawberry_stage", "strawberry_stage")
     }
+
+    private fun makeStrawberryCrop(
+        block: StrawberryCropBlock,
+        modelName: String,
+        textureName: String
+    ) {
+        getVariantBuilder(block).forAllStates { state ->
+            strawberryStates(state, block, modelName, textureName)
+        }
+    }
+
+    private fun strawberryStates(
+        state: BlockState,
+        block: StrawberryCropBlock,
+        modelName: String,
+        textureName: String
+    ) = arrayOf(ConfiguredModel(models()
+        .crop("$modelName${state.getValue(block.ageProperty)}",
+            ResourceLocation(TutorialMod.MOD_ID, "block/$textureName${state.getValue(block.ageProperty)}"))
+        .renderType("cutout")))
 
     private fun blockWithItem(blockRegistryObject: RegistryObject<out Block>) {
         simpleBlockWithItem(blockRegistryObject.get(), cubeAll(blockRegistryObject.get()))

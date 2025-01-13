@@ -4,6 +4,7 @@ import net.minecraft.world.item.ArmorItem
 import net.minecraft.world.item.AxeItem
 import net.minecraft.world.item.HoeItem
 import net.minecraft.world.item.Item
+import net.minecraft.world.item.ItemNameBlockItem
 import net.minecraft.world.item.PickaxeItem
 import net.minecraft.world.item.ShovelItem
 import net.minecraft.world.item.SwordItem
@@ -12,6 +13,7 @@ import net.minecraftforge.registries.DeferredRegister
 import net.minecraftforge.registries.ForgeRegistries
 import net.minecraftforge.registries.RegistryObject
 import top.srcres258.tutorialmod.TutorialMod
+import top.srcres258.tutorialmod.block.ModBlocks
 import top.srcres258.tutorialmod.item.custom.FuelItem
 import top.srcres258.tutorialmod.item.custom.MetalDetectorItem
 import top.srcres258.tutorialmod.item.custom.ModArmorItem
@@ -69,6 +71,10 @@ object ModItems {
     }
     val SAPPHIRE_BOOTS: RegistryObject<Item> = ITEMS.register("sapphire_boots") {
         ArmorItem(ModArmorMaterials.SAPPHIRE, ArmorItem.Type.BOOTS, Item.Properties())
+    }
+
+    val STRAWBERRY_SEEDS: RegistryObject<Item> = ITEMS.register("strawberry_seeds") {
+        ItemNameBlockItem(ModBlocks.STRAWBERRY_CROP.get(), Item.Properties())
     }
 
     fun register(eventBus: IEventBus) {

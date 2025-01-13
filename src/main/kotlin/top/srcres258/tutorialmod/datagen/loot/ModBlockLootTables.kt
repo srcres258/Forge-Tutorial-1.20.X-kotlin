@@ -1,5 +1,6 @@
 package top.srcres258.tutorialmod.datagen.loot
 
+import net.minecraft.advancements.critereon.StatePropertiesPredicate
 import net.minecraft.data.loot.BlockLootSubProvider
 import net.minecraft.world.flag.FeatureFlags
 import net.minecraft.world.item.Item
@@ -8,9 +9,11 @@ import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.storage.loot.entries.LootItem
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator
 import net.minecraftforge.registries.RegistryObject
 import top.srcres258.tutorialmod.block.ModBlocks
+import top.srcres258.tutorialmod.block.custom.StrawberryCropBlock
 import top.srcres258.tutorialmod.item.ModItems
 
 class ModBlockLootTables : BlockLootSubProvider(setOf(), FeatureFlags.REGISTRY.allFlags()) {
@@ -46,6 +49,12 @@ class ModBlockLootTables : BlockLootSubProvider(setOf(), FeatureFlags.REGISTRY.a
         add(ModBlocks.SAPPHIRE_DOOR.get()) {
             createDoorTable(ModBlocks.SAPPHIRE_DOOR.get())
         }
+
+        val builder = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.STRAWBERRY_CROP.get())
+            .setProperties(StatePropertiesPredicate.Builder.properties()
+                .hasProperty(StrawberryCropBlock.AGE, 5))
+        add(ModBlocks.STRAWBERRY_CROP.get(), createCropDrops(ModBlocks.STRAWBERRY_CROP.get(), ModItems.STRAWBERRY.get(),
+            ModItems.STRAWBERRY_SEEDS.get(), builder))
     }
 
     private fun createCopperLikeOreDrops(block: Block, item: Item) =
