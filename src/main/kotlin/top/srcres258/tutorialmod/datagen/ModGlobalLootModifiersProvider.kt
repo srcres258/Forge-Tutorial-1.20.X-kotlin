@@ -10,6 +10,7 @@ import net.minecraftforge.common.loot.LootTableIdCondition
 import top.srcres258.tutorialmod.TutorialMod
 import top.srcres258.tutorialmod.item.ModItems
 import top.srcres258.tutorialmod.loot.AddItemModifier
+import top.srcres258.tutorialmod.loot.AddSusSandItemModifier
 
 class ModGlobalLootModifiersProvider(
     output: PackOutput
@@ -33,6 +34,13 @@ class ModGlobalLootModifiersProvider(
         add("metal_detector_from_jungle_temple", AddItemModifier(
             arrayOf(
                 LootTableIdCondition.Builder(ResourceLocation("chests/jungle_temple")).build()
+            ),
+            ModItems.METAL_DETECTOR.get()
+        ))
+
+        add("metal_detector_from_suspicious_sand", AddSusSandItemModifier(
+            arrayOf(
+                LootTableIdCondition.Builder(ResourceLocation("archaeology/desert_pyramid")).build()
             ),
             ModItems.METAL_DETECTOR.get()
         ))

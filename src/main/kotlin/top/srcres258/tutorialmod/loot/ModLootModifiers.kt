@@ -14,6 +14,8 @@ object ModLootModifiers {
 
     val ADD_ITEM: RegistryObject<Codec<out IGlobalLootModifier>> =
         LOOT_MODIFIER_SERIALIZERS.register("add_item") { AddItemModifier.CODEC }
+    val ADD_SUS_SAND_ITEM: RegistryObject<Codec<out IGlobalLootModifier>> =
+        LOOT_MODIFIER_SERIALIZERS.register("add_sus_sand_item") { AddSusSandItemModifier.CODEC }
 
     fun register(eventBus: IEventBus) {
         LOOT_MODIFIER_SERIALIZERS.register(eventBus)
