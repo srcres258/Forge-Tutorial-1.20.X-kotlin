@@ -1,5 +1,6 @@
 package top.srcres258.tutorialmod.item
 
+import net.minecraft.world.item.ArmorItem
 import net.minecraft.world.item.AxeItem
 import net.minecraft.world.item.HoeItem
 import net.minecraft.world.item.Item
@@ -54,6 +55,19 @@ object ModItems {
     }
     val SAPPHIRE_HOE: RegistryObject<Item> = ITEMS.register("sapphire_hoe") {
         HoeItem(ModToolTiers.SAPPHIRE, 0, 0F, Item.Properties())
+    }
+
+    val SAPPHIRE_HELMET: RegistryObject<Item> = ITEMS.register("sapphire_helmet") {
+        ArmorItem(ModArmorMaterials.SAPPHIRE, ArmorItem.Type.HELMET, Item.Properties())
+    }
+    val SAPPHIRE_CHESTPLATE: RegistryObject<Item> = ITEMS.register("sapphire_chestplate") {
+        ArmorItem(ModArmorMaterials.SAPPHIRE, ArmorItem.Type.CHESTPLATE, Item.Properties())
+    }
+    val SAPPHIRE_LEGGINGS: RegistryObject<Item> = ITEMS.register("sapphire_leggings") {
+        ArmorItem(ModArmorMaterials.SAPPHIRE, ArmorItem.Type.LEGGINGS, Item.Properties())
+    }
+    val SAPPHIRE_BOOTS: RegistryObject<Item> = ITEMS.register("sapphire_boots") {
+        ArmorItem(ModArmorMaterials.SAPPHIRE, ArmorItem.Type.BOOTS, Item.Properties())
     }
 
     fun register(eventBus: IEventBus) {
