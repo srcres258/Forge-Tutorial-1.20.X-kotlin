@@ -19,6 +19,7 @@ import top.srcres258.tutorialmod.block.ModBlocks
 import top.srcres258.tutorialmod.item.ModCreativeModeTab
 import top.srcres258.tutorialmod.item.ModItems
 import top.srcres258.tutorialmod.loot.ModLootModifiers
+import top.srcres258.tutorialmod.sound.ModSounds
 import top.srcres258.tutorialmod.villager.ModVillagers
 
 /**
@@ -43,6 +44,7 @@ object TutorialMod {
         ModBlocks.register(MOD_BUS)
         ModLootModifiers.register(MOD_BUS)
         ModVillagers.register(MOD_BUS)
+        ModSounds.register(MOD_BUS)
 
         MOD_BUS.addListener(TutorialMod::commonSetup)
         MinecraftForge.EVENT_BUS.register(this)

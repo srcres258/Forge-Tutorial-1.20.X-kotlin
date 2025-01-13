@@ -31,6 +31,7 @@ import top.srcres258.tutorialmod.block.custom.CornCropBlock
 import top.srcres258.tutorialmod.block.custom.SoundBlock
 import top.srcres258.tutorialmod.block.custom.StrawberryCropBlock
 import top.srcres258.tutorialmod.item.ModItems
+import top.srcres258.tutorialmod.sound.ModSounds
 
 object ModBlocks {
     val BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, TutorialMod.MOD_ID)
@@ -78,7 +79,8 @@ object ModBlocks {
     }
 
     val SOUND_BLOCK: RegistryObject<Block> = registerBlock("sound_block") {
-        SoundBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK))
+        SoundBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+            .sound(ModSounds.SOUND_BLOCK_SOUNDS))
     }
 
     val SAPPHIRE_STAIRS: RegistryObject<Block> = registerBlock("sapphire_stairs") {

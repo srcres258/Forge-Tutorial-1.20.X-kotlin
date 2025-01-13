@@ -3,6 +3,7 @@ package top.srcres258.tutorialmod.item.custom
 import net.minecraft.client.resources.language.I18n
 import net.minecraft.core.BlockPos
 import net.minecraft.network.chat.Component
+import net.minecraft.sounds.SoundSource
 import net.minecraft.world.InteractionResult
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.Item
@@ -12,6 +13,7 @@ import net.minecraft.world.item.context.UseOnContext
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.state.BlockState
+import top.srcres258.tutorialmod.sound.ModSounds
 import top.srcres258.tutorialmod.util.ModTags
 
 class MetalDetectorItem(pProperties: Properties) : Item(pProperties) {
@@ -28,6 +30,11 @@ class MetalDetectorItem(pProperties: Properties) : Item(pProperties) {
                 if (isValuableBlock(state)) {
                     outputValuableCoordinates(positionClicked.below(i), contextPlayer, state.block)
                     foundBlock = true
+
+                    pContext.level.playSeededSound(null,
+                        positionClicked.x.toDouble(), positionClicked.y.toDouble(), positionClicked.z.toDouble(),
+                        ModSounds.METAL_DETECTOR_FOUND_ORE.get(), SoundSource.BLOCKS,
+                        1F, 1F, 0L)
 
                     break
                 }
