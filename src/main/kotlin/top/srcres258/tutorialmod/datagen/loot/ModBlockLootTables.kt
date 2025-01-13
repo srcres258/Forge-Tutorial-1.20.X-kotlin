@@ -49,7 +49,7 @@ class ModBlockLootTables : BlockLootSubProvider(setOf(), FeatureFlags.REGISTRY.a
         }
         add(ModBlocks.SAPPHIRE_DOOR.get()) {
             createDoorTable(ModBlocks.SAPPHIRE_DOOR.get())
-        };
+        }
 
         LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.STRAWBERRY_CROP.get())
             .setProperties(StatePropertiesPredicate.Builder.properties()
