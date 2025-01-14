@@ -133,13 +133,6 @@ public class RhinoModel<T extends Entity> extends HierarchicalModel<T> {
 
     @Override
     public void setupAnim(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-//        root().getAllParts().forEach(ModelPart::resetPose);
-//        applyHeadRotation(netHeadYaw, headPitch);
-//
-//        animateWalk(ModAnimationDefinitions.RHINO_WALK, limbSwing, limbSwingAmount, 2F, 2.5F);
-//        animate(((RhinoEntity) entity).idleAnimationState, ModAnimationDefinitions.RHINO_IDLE, ageInTicks, 1F);
-//        animate(((RhinoEntity) entity).attackAnimationState, ModAnimationDefinitions.RHINO_ATTACK, ageInTicks, 1F);
-
         RhinoModelKt.setupAnimDelegated(this, entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
     }
 

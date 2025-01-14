@@ -21,7 +21,7 @@ internal fun <T: Entity> RhinoModel<T>.setupAnimDelegated(
     animateWalkDelegated(ModAnimationDefinitions.RHINO_WALK, limbSwing, limbSwingAmount, 2F, 2.5F)
     (entity as RhinoEntity).let { entity ->
         animateDelegated(entity.idleAnimationState, ModAnimationDefinitions.RHINO_IDLE, ageInTicks, 1F)
-        // TODO
+        animateDelegated(entity.attackAnimationState, ModAnimationDefinitions.RHINO_ATTACK, ageInTicks, 1F)
     }
 }
 

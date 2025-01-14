@@ -1,5 +1,8 @@
 package top.srcres258.tutorialmod.entity.custom
 
+import net.minecraft.network.syncher.EntityDataAccessor
+import net.minecraft.network.syncher.EntityDataSerializers
+import net.minecraft.network.syncher.SynchedEntityData
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.sounds.SoundEvent
 import net.minecraft.sounds.SoundEvents
@@ -17,6 +20,7 @@ import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal
 import net.minecraft.world.entity.ai.goal.TemptGoal
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal
 import net.minecraft.world.entity.animal.Animal
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.ItemStack
@@ -24,7 +28,11 @@ import net.minecraft.world.item.Items
 import net.minecraft.world.item.crafting.Ingredient
 import net.minecraft.world.level.Level
 import top.srcres258.tutorialmod.entity.ModEntities
+import top.srcres258.tutorialmod.entity.ai.RhinoAttackGoal
 import kotlin.math.min
+
+private val ATTACKING: EntityDataAccessor<Boolean> =
+    SynchedEntityData.defineId(RhinoEntity::class.java, EntityDataSerializers.BOOLEAN)
 
 class RhinoEntity(pEntityType: EntityType<out Animal>, pLevel: Level) : Animal(pEntityType, pLevel) {
     companion object {
@@ -39,6 +47,9 @@ class RhinoEntity(pEntityType: EntityType<out Animal>, pLevel: Level) : Animal(p
 
     val idleAnimationState = AnimationState()
     var idleAnimationTimeout = 0
+
+    val attackAnimationState = AnimationState()
+    var attackAnimationTimeout = 0
 
     override fun tick() {
         super.tick()
@@ -55,6 +66,17 @@ class RhinoEntity(pEntityType: EntityType<out Animal>, pLevel: Level) : Animal(p
         } else {
             idleAnimationTimeout--
         }
+
+        if (isAttacking && attackAnimationTimeout <= 0) {
+            attackAnimationTimeout = 80
+            attackAnimationState.start(tickCount)
+        } else {
+            attackAnimationTimeout--
+        }
+
+        if (!isAttacking) {
+            attackAnimationState.stop()
+        }
     }
 
     override fun updateWalkAnimation(pPartialTick: Float) {
@@ -63,9 +85,22 @@ class RhinoEntity(pEntityType: EntityType<out Animal>, pLevel: Level) : Animal(p
         walkAnimation.update(f, 0.2F)
     }
 
+    var isAttacking: Boolean
+        get() = entityData.get(ATTACKING)
+        set(value) {
+            entityData.set(ATTACKING, value)
+        }
+
+    override fun defineSynchedData() {
+        super.defineSynchedData()
+        entityData.define(ATTACKING, false)
+    }
+
     override fun registerGoals() {
         goalSelector.run {
             addGoal(0, FloatGoal(this@RhinoEntity))
+
+            addGoal(1, RhinoAttackGoal(this@RhinoEntity, 1.0, true))
 
             addGoal(1, BreedGoal(this@RhinoEntity, 1.15))
             addGoal(2, TemptGoal(this@RhinoEntity, 1.2, Ingredient.of(Items.COOKED_BEEF), false))
@@ -76,6 +111,8 @@ class RhinoEntity(pEntityType: EntityType<out Animal>, pLevel: Level) : Animal(p
             addGoal(5, LookAtPlayerGoal(this@RhinoEntity, Player::class.java, 3F))
             addGoal(6, RandomLookAroundGoal(this@RhinoEntity))
         }
+
+        targetSelector.addGoal(1, HurtByTargetGoal(this@RhinoEntity))
     }
 
     override fun getBreedOffspring(level: ServerLevel, p1: AgeableMob) =
