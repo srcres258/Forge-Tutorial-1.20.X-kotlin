@@ -7,6 +7,7 @@ import net.minecraft.tags.ItemTags
 import net.minecraft.world.level.block.Block
 import net.minecraftforge.common.data.ExistingFileHelper
 import top.srcres258.tutorialmod.TutorialMod
+import top.srcres258.tutorialmod.block.ModBlocks
 import top.srcres258.tutorialmod.item.ModItems
 import java.util.concurrent.CompletableFuture
 
@@ -30,5 +31,14 @@ class ModItemTagGenerator(
 
         tag(ItemTags.CREEPER_DROP_MUSIC_DISCS)
             .add(ModItems.BAR_BRAWL_MUSIC_DISC.get())
+
+        tag(ItemTags.LOGS_THAT_BURN)
+            .add(ModBlocks.PINE_LOG.get().asItem())
+            .add(ModBlocks.PINE_WOOD.get().asItem())
+            .add(ModBlocks.STRIPPED_PINE_LOG.get().asItem())
+            .add(ModBlocks.STRIPPED_PINE_WOOD.get().asItem())
+
+        tag(ItemTags.PLANKS)
+            .add(ModBlocks.PINE_PLANKS.get().asItem())
     }
 }

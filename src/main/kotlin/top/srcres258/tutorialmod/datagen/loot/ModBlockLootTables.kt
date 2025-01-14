@@ -75,6 +75,17 @@ class ModBlockLootTables : BlockLootSubProvider(setOf(), FeatureFlags.REGISTRY.a
         add(ModBlocks.POTTED_CATMINT.get(), createPotFlowerItemTable(ModBlocks.CATMINT.get()))
 
         dropSelf(ModBlocks.GEM_POLISHING_STATION.get())
+
+        dropSelf(ModBlocks.PINE_LOG.get())
+        dropSelf(ModBlocks.PINE_WOOD.get())
+        dropSelf(ModBlocks.STRIPPED_PINE_LOG.get())
+        dropSelf(ModBlocks.STRIPPED_PINE_WOOD.get())
+        dropSelf(ModBlocks.PINE_PLANKS.get())
+
+        add(ModBlocks.PINE_LEAVES.get()) { blocks ->
+            // TODO: change SAPPHIRE_BLOCK to sapling when done
+            createLeavesDrops(blocks, ModBlocks.SAPPHIRE_BLOCK.get(), *NORMAL_LEAVES_SAPLING_CHANCES)
+        }
     }
 
     private fun createCopperLikeOreDrops(block: Block, item: Item) =

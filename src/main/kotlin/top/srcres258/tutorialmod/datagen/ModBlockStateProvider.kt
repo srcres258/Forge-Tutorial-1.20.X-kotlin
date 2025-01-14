@@ -8,6 +8,7 @@ import net.minecraftforge.client.model.generators.BlockStateProvider
 import net.minecraftforge.client.model.generators.ConfiguredModel
 import net.minecraftforge.client.model.generators.ModelFile
 import net.minecraftforge.common.data.ExistingFileHelper
+import net.minecraftforge.registries.ForgeRegistries
 import net.minecraftforge.registries.RegistryObject
 import top.srcres258.tutorialmod.TutorialMod
 import top.srcres258.tutorialmod.block.ModBlocks
@@ -78,7 +79,45 @@ class ModBlockStateProvider(
             ModBlocks.GEM_POLISHING_STATION.get(),
             ModelFile.UncheckedModelFile(modLoc("block/gem_polishing_station"))
         )
+
+        logBlock(ModBlocks.PINE_LOG.get() as RotatedPillarBlock)
+        axisBlock(ModBlocks.PINE_WOOD.get() as RotatedPillarBlock,
+            blockTexture(ModBlocks.PINE_LOG.get()),
+            blockTexture(ModBlocks.PINE_LOG.get()))
+
+        axisBlock(ModBlocks.STRIPPED_PINE_LOG.get() as RotatedPillarBlock,
+            blockTexture(ModBlocks.STRIPPED_PINE_LOG.get()),
+            ResourceLocation(TutorialMod.MOD_ID, "block/stripped_pine_log_top"))
+        axisBlock(ModBlocks.STRIPPED_PINE_WOOD.get() as RotatedPillarBlock,
+            blockTexture(ModBlocks.STRIPPED_PINE_LOG.get()),
+            blockTexture(ModBlocks.STRIPPED_PINE_LOG.get()))
+
+        blockItem(ModBlocks.PINE_LOG)
+        blockItem(ModBlocks.PINE_WOOD)
+        blockItem(ModBlocks.STRIPPED_PINE_LOG)
+        blockItem(ModBlocks.STRIPPED_PINE_WOOD)
+
+        blockWithItem(ModBlocks.PINE_PLANKS)
+
+        leavesBlock(ModBlocks.PINE_LEAVES)
     }
+
+    private fun leavesBlock(blockRegObj: RegistryObject<out Block>) =
+        simpleBlockWithItem(
+            blockRegObj.get(),
+            models()
+                .singleTexture(
+                    ForgeRegistries.BLOCKS.getKey(blockRegObj.get())!!.path,
+                    ResourceLocation("minecraft:block/leaves"),
+                    "all",
+                    blockTexture(blockRegObj.get())
+                )
+                .renderType("cutout")
+        )
+
+    private fun blockItem(blockRegObj: RegistryObject<out Block>) =
+        simpleBlockItem(blockRegObj.get(), ModelFile.UncheckedModelFile("${TutorialMod.MOD_ID}:block/"
+                + ForgeRegistries.BLOCKS.getKey(blockRegObj.get())!!.path))
 
     private fun makeStrawberryCrop(
         block: StrawberryCropBlock,

@@ -85,6 +85,14 @@ object ModCreativeModeTab {
                     output.accept(ModBlocks.CATMINT.get())
 
                     output.accept(ModBlocks.GEM_POLISHING_STATION.get())
+
+                    output.accept(ModBlocks.PINE_LOG.get())
+                    output.accept(ModBlocks.PINE_WOOD.get())
+                    output.accept(ModBlocks.STRIPPED_PINE_LOG.get())
+                    output.accept(ModBlocks.STRIPPED_PINE_WOOD.get())
+
+                    output.accept(ModBlocks.PINE_PLANKS.get())
+                    output.accept(ModBlocks.PINE_LEAVES.get())
                 }
             }
             .build()

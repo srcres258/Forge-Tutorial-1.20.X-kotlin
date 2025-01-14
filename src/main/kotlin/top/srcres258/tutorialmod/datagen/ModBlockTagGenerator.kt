@@ -51,5 +51,14 @@ class ModBlockTagGenerator(
             .add(ModBlocks.SAPPHIRE_FENCE_GATE.get())
         tag(BlockTags.WALLS)
             .add(ModBlocks.SAPPHIRE_WALL.get())
+
+        tag(BlockTags.LOGS_THAT_BURN)
+            .add(ModBlocks.PINE_LOG.get())
+            .add(ModBlocks.PINE_WOOD.get())
+            .add(ModBlocks.STRIPPED_PINE_LOG.get())
+            .add(ModBlocks.STRIPPED_PINE_WOOD.get())
+
+        tag(BlockTags.PLANKS)
+            .add(ModBlocks.PINE_PLANKS.get())
     }
 }

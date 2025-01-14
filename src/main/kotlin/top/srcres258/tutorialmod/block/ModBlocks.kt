@@ -1,10 +1,13 @@
 package top.srcres258.tutorialmod.block
 
+import net.minecraft.core.BlockPos
+import net.minecraft.core.Direction
 import net.minecraft.sounds.SoundEvents
 import net.minecraft.util.valueproviders.UniformInt
 import net.minecraft.world.effect.MobEffects
 import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.Item
+import net.minecraft.world.level.BlockGetter
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.ButtonBlock
@@ -14,6 +17,7 @@ import net.minecraft.world.level.block.FenceBlock
 import net.minecraft.world.level.block.FenceGateBlock
 import net.minecraft.world.level.block.FlowerBlock
 import net.minecraft.world.level.block.FlowerPotBlock
+import net.minecraft.world.level.block.LeavesBlock
 import net.minecraft.world.level.block.PressurePlateBlock
 import net.minecraft.world.level.block.SlabBlock
 import net.minecraft.world.level.block.SoundType
@@ -21,16 +25,14 @@ import net.minecraft.world.level.block.StairBlock
 import net.minecraft.world.level.block.TrapDoorBlock
 import net.minecraft.world.level.block.WallBlock
 import net.minecraft.world.level.block.state.BlockBehaviour
+import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.properties.BlockSetType
 import net.minecraftforge.eventbus.api.IEventBus
 import net.minecraftforge.registries.DeferredRegister
 import net.minecraftforge.registries.ForgeRegistries
 import net.minecraftforge.registries.RegistryObject
 import top.srcres258.tutorialmod.TutorialMod
-import top.srcres258.tutorialmod.block.custom.CornCropBlock
-import top.srcres258.tutorialmod.block.custom.GemPolishingStationBlock
-import top.srcres258.tutorialmod.block.custom.SoundBlock
-import top.srcres258.tutorialmod.block.custom.StrawberryCropBlock
+import top.srcres258.tutorialmod.block.custom.*
 import top.srcres258.tutorialmod.item.ModItems
 import top.srcres258.tutorialmod.sound.ModSounds
 
@@ -181,6 +183,72 @@ object ModBlocks {
     val GEM_POLISHING_STATION: RegistryObject<Block> = registerBlock("gem_polishing_station") {
         GemPolishingStationBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
             .noOcclusion())
+    }
+
+    val PINE_LOG: RegistryObject<Block> = registerBlock("pine_log") {
+        ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)
+            .strength(3F))
+    }
+    val PINE_WOOD: RegistryObject<Block> = registerBlock("pine_wood") {
+        ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)
+            .strength(3F))
+    }
+    val STRIPPED_PINE_LOG: RegistryObject<Block> = registerBlock("stripped_pine_log") {
+        ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_LOG)
+            .strength(3F))
+    }
+    val STRIPPED_PINE_WOOD: RegistryObject<Block> = registerBlock("stripped_pine_wood") {
+        ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_WOOD)
+            .strength(3F))
+    }
+
+    val PINE_PLANKS: RegistryObject<Block> = registerBlock("pine_planks") {
+        object : Block(Properties.copy(Blocks.OAK_PLANKS)) {
+            override fun isFlammable(
+                state: BlockState?,
+                level: BlockGetter?,
+                pos: BlockPos?,
+                direction: Direction?
+            ) = true
+
+            override fun getFlammability(
+                state: BlockState?,
+                level: BlockGetter?,
+                pos: BlockPos?,
+                direction: Direction?
+            ) = 20
+
+            override fun getFireSpreadSpeed(
+                state: BlockState?,
+                level: BlockGetter?,
+                pos: BlockPos?,
+                direction: Direction?
+            ) = 5
+        }
+    }
+    val PINE_LEAVES: RegistryObject<Block> = registerBlock("pine_leaves") {
+        object : LeavesBlock(Properties.copy(Blocks.OAK_LEAVES)) {
+            override fun isFlammable(
+                state: BlockState?,
+                level: BlockGetter?,
+                pos: BlockPos?,
+                direction: Direction?
+            ) = true
+
+            override fun getFlammability(
+                state: BlockState?,
+                level: BlockGetter?,
+                pos: BlockPos?,
+                direction: Direction?
+            ) = 60
+
+            override fun getFireSpreadSpeed(
+                state: BlockState?,
+                level: BlockGetter?,
+                pos: BlockPos?,
+                direction: Direction?
+            ) = 30
+        }
     }
 
     private fun <T: Block> registerBlock(
