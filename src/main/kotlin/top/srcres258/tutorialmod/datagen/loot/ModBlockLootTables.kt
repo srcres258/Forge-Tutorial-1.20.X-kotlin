@@ -73,6 +73,8 @@ class ModBlockLootTables : BlockLootSubProvider(setOf(), FeatureFlags.REGISTRY.a
 
         dropSelf(ModBlocks.CATMINT.get())
         add(ModBlocks.POTTED_CATMINT.get(), createPotFlowerItemTable(ModBlocks.CATMINT.get()))
+
+        dropSelf(ModBlocks.GEM_POLISHING_STATION.get())
     }
 
     private fun createCopperLikeOreDrops(block: Block, item: Item) =

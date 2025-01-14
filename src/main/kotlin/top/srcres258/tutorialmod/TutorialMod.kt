@@ -1,5 +1,6 @@
 package top.srcres258.tutorialmod
 
+import net.minecraft.client.gui.screens.MenuScreens
 import net.minecraft.client.renderer.entity.EntityRenderers
 import net.minecraft.world.item.CreativeModeTabs
 import net.minecraft.world.level.block.Blocks
@@ -17,11 +18,14 @@ import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import thedarkcolour.kotlinforforge.forge.MOD_BUS
 import top.srcres258.tutorialmod.block.ModBlocks
+import top.srcres258.tutorialmod.block.entity.ModBlockEntities
 import top.srcres258.tutorialmod.entity.ModEntities
 import top.srcres258.tutorialmod.entity.client.RhinoRenderer
 import top.srcres258.tutorialmod.item.ModCreativeModeTab
 import top.srcres258.tutorialmod.item.ModItems
 import top.srcres258.tutorialmod.loot.ModLootModifiers
+import top.srcres258.tutorialmod.screen.GemPolishingStationScreen
+import top.srcres258.tutorialmod.screen.ModMenuTypes
 import top.srcres258.tutorialmod.sound.ModSounds
 import top.srcres258.tutorialmod.villager.ModVillagers
 
@@ -49,6 +53,8 @@ object TutorialMod {
         ModVillagers.register(MOD_BUS)
         ModSounds.register(MOD_BUS)
         ModEntities.register(MOD_BUS)
+        ModBlockEntities.register(MOD_BUS)
+        ModMenuTypes.register(MOD_BUS)
 
         MOD_BUS.addListener(TutorialMod::commonSetup)
         MinecraftForge.EVENT_BUS.register(this)
@@ -78,6 +84,8 @@ object TutorialMod {
         @SubscribeEvent
         fun onClientSetup(event: FMLClientSetupEvent) {
             EntityRenderers.register(ModEntities.RHINO.get(), ::RhinoRenderer)
+
+            MenuScreens.register(ModMenuTypes.GEM_POLISHING_MENU.get(), ::GemPolishingStationScreen)
         }
     }
 }

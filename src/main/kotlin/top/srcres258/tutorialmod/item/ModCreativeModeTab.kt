@@ -83,6 +83,8 @@ object ModCreativeModeTab {
                     output.accept(ModBlocks.SAPPHIRE_TRAPDOOR.get())
 
                     output.accept(ModBlocks.CATMINT.get())
+
+                    output.accept(ModBlocks.GEM_POLISHING_STATION.get())
                 }
             }
             .build()

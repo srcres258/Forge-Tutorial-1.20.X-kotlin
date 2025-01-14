@@ -28,6 +28,7 @@ import net.minecraftforge.registries.ForgeRegistries
 import net.minecraftforge.registries.RegistryObject
 import top.srcres258.tutorialmod.TutorialMod
 import top.srcres258.tutorialmod.block.custom.CornCropBlock
+import top.srcres258.tutorialmod.block.custom.GemPolishingStationBlock
 import top.srcres258.tutorialmod.block.custom.SoundBlock
 import top.srcres258.tutorialmod.block.custom.StrawberryCropBlock
 import top.srcres258.tutorialmod.item.ModItems
@@ -175,6 +176,11 @@ object ModBlocks {
             BlockBehaviour.Properties.copy(Blocks.POTTED_ALLIUM)
                 .noOcclusion()
         )
+    }
+
+    val GEM_POLISHING_STATION: RegistryObject<Block> = registerBlock("gem_polishing_station") {
+        GemPolishingStationBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+            .noOcclusion())
     }
 
     private fun <T: Block> registerBlock(
