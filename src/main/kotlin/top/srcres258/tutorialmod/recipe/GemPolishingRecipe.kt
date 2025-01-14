@@ -1,6 +1,7 @@
 package top.srcres258.tutorialmod.recipe
 
 import com.google.gson.JsonObject
+import net.minecraft.core.NonNullList
 import net.minecraft.core.RegistryAccess
 import net.minecraft.network.FriendlyByteBuf
 import net.minecraft.resources.ResourceLocation
@@ -27,6 +28,14 @@ class GemPolishingRecipe(
         } else {
             inputItems[0].test(container.getItem(0))
         }
+
+    override fun getIngredients(): NonNullList<Ingredient> =
+        NonNullList.withSize(inputItems.size, Ingredient.EMPTY)
+            .also { ingredients ->
+                ingredients.indices.forEach { i ->
+                    ingredients[i] = inputItems[i]
+                }
+            }
 
     override fun assemble(p0: SimpleContainer, p1: RegistryAccess): ItemStack = output.copy()
 
