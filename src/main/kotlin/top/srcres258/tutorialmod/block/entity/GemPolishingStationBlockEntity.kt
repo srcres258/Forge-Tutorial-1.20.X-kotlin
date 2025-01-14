@@ -19,8 +19,9 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities
 import net.minecraftforge.common.util.LazyOptional
 import net.minecraftforge.items.IItemHandler
 import net.minecraftforge.items.ItemStackHandler
-import top.srcres258.tutorialmod.item.ModItems
+import top.srcres258.tutorialmod.recipe.GemPolishingRecipe
 import top.srcres258.tutorialmod.screen.GemPolishingStationMenu
+import top.srcres258.tutorialmod.util.BLANK_REGISTRY_ACCESS
 
 private const val INPUT_SLOT = 0
 private const val OUTPUT_SLOT = 1
@@ -119,21 +120,35 @@ class GemPolishingStationBlockEntity(
     }
 
     private fun craftItem() {
-        val result = ItemStack(ModItems.SAPPHIRE.get(), 1)
+        val recipe = currentRecipe ?: return
+        val result = recipe.getResultItem(BLANK_REGISTRY_ACCESS)
 
         itemHandler.extractItem(INPUT_SLOT, 1, false)
+
         itemHandler.setStackInSlot(OUTPUT_SLOT, ItemStack(result.item,
             itemHandler.getStackInSlot(OUTPUT_SLOT).count + result.count))
     }
 
     private val hasRecipe: Boolean
         get() {
-            val hasCraftingItem = itemHandler.getStackInSlot(INPUT_SLOT).item == ModItems.RAW_SAPPHIRE.get()
-            val result = ItemStack(ModItems.SAPPHIRE.get())
+            val recipe = currentRecipe ?: return false
+            val result = recipe.getResultItem(level?.registryAccess() ?: return false)
 
-            return hasCraftingItem
-                    && canInsertAmountIntoOutputSlot(result.count)
+            return canInsertAmountIntoOutputSlot(result.count)
                     && canInsertItemIntoOutputSlot(result.item)
+        }
+
+    private val currentRecipe: GemPolishingRecipe?
+        get() {
+            val inventory = SimpleContainer(itemHandler.slots)
+            for (i in 0 ..< itemHandler.slots) {
+                inventory.setItem(i, itemHandler.getStackInSlot(i))
+            }
+
+            return level?.let { level ->
+                level.recipeManager.getRecipeFor(GemPolishingRecipe.Type, inventory, level)
+                    .orElse(null)
+            }
         }
 
     private fun canInsertItemIntoOutputSlot(item: Item) =

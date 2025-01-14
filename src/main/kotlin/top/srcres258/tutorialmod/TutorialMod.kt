@@ -24,6 +24,7 @@ import top.srcres258.tutorialmod.entity.client.RhinoRenderer
 import top.srcres258.tutorialmod.item.ModCreativeModeTab
 import top.srcres258.tutorialmod.item.ModItems
 import top.srcres258.tutorialmod.loot.ModLootModifiers
+import top.srcres258.tutorialmod.recipe.ModRecipes
 import top.srcres258.tutorialmod.screen.GemPolishingStationScreen
 import top.srcres258.tutorialmod.screen.ModMenuTypes
 import top.srcres258.tutorialmod.sound.ModSounds
@@ -55,6 +56,7 @@ object TutorialMod {
         ModEntities.register(MOD_BUS)
         ModBlockEntities.register(MOD_BUS)
         ModMenuTypes.register(MOD_BUS)
+        ModRecipes.register(MOD_BUS)
 
         MOD_BUS.addListener(TutorialMod::commonSetup)
         MinecraftForge.EVENT_BUS.register(this)
