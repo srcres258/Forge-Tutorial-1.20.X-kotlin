@@ -1,5 +1,7 @@
 package top.srcres258.tutorialmod.event
 
+import net.minecraft.client.renderer.blockentity.HangingSignRenderer
+import net.minecraft.client.renderer.blockentity.SignRenderer
 import net.minecraftforge.api.distmarker.Dist
 import net.minecraftforge.client.event.EntityRenderersEvent
 import net.minecraftforge.eventbus.api.SubscribeEvent
@@ -26,6 +28,15 @@ object ModEventBusClientEvents {
         event.registerBlockEntityRenderer(
             ModBlockEntities.GEM_POLISHING_BE.get(),
             ::GemPolishingBlockEntityRenderer
+        )
+
+        event.registerBlockEntityRenderer(
+            ModBlockEntities.MOD_SIGN.get(),
+            ::SignRenderer
+        )
+        event.registerBlockEntityRenderer(
+            ModBlockEntities.MOD_HANGING_SIGN.get(),
+            ::HangingSignRenderer
         )
     }
 }

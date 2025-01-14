@@ -53,6 +53,9 @@ object ModCreativeModeTab {
 
                     output.accept(ModItems.RHINO_SPAWN_EGG.get())
 
+                    output.accept(ModItems.PINE_SIGN.get())
+                    output.accept(ModItems.PINE_HANGING_SIGN.get())
+
                     // vanilla
                     output.accept(Items.DIAMOND)
                 }

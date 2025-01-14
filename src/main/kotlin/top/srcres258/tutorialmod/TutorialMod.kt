@@ -1,6 +1,7 @@
 package top.srcres258.tutorialmod
 
 import net.minecraft.client.gui.screens.MenuScreens
+import net.minecraft.client.renderer.Sheets
 import net.minecraft.client.renderer.entity.EntityRenderers
 import net.minecraft.world.item.CreativeModeTabs
 import net.minecraft.world.level.block.Blocks
@@ -28,6 +29,7 @@ import top.srcres258.tutorialmod.recipe.ModRecipes
 import top.srcres258.tutorialmod.screen.GemPolishingStationScreen
 import top.srcres258.tutorialmod.screen.ModMenuTypes
 import top.srcres258.tutorialmod.sound.ModSounds
+import top.srcres258.tutorialmod.util.ModWoodTypes
 import top.srcres258.tutorialmod.villager.ModVillagers
 
 /**
@@ -85,6 +87,8 @@ object TutorialMod {
     object ClientModEvents {
         @SubscribeEvent
         fun onClientSetup(event: FMLClientSetupEvent) {
+            Sheets.addWoodType(ModWoodTypes.PINE)
+
             EntityRenderers.register(ModEntities.RHINO.get(), ::RhinoRenderer)
 
             MenuScreens.register(ModMenuTypes.GEM_POLISHING_MENU.get(), ::GemPolishingStationScreen)

@@ -2,12 +2,14 @@ package top.srcres258.tutorialmod.item
 
 import net.minecraft.world.item.ArmorItem
 import net.minecraft.world.item.AxeItem
+import net.minecraft.world.item.HangingSignItem
 import net.minecraft.world.item.HoeItem
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemNameBlockItem
 import net.minecraft.world.item.PickaxeItem
 import net.minecraft.world.item.RecordItem
 import net.minecraft.world.item.ShovelItem
+import net.minecraft.world.item.SignItem
 import net.minecraft.world.item.SwordItem
 import net.minecraftforge.common.ForgeSpawnEggItem
 import net.minecraftforge.eventbus.api.IEventBus
@@ -94,6 +96,21 @@ object ModItems {
 
     val RHINO_SPAWN_EGG: RegistryObject<Item> = ITEMS.register("rhino_spawn_egg") {
         ForgeSpawnEggItem(ModEntities.RHINO, 0x7E9680, 0xC5D1C5, Item.Properties())
+    }
+
+    val PINE_SIGN: RegistryObject<Item> = ITEMS.register("pine_sign") {
+        SignItem(
+            Item.Properties().stacksTo(16),
+            ModBlocks.PINE_SIGN.get(),
+            ModBlocks.PINE_WALL_SIGN.get()
+        )
+    }
+    val PINE_HANGING_SIGN: RegistryObject<Item> = ITEMS.register("pine_hanging_sign") {
+        HangingSignItem(
+            ModBlocks.PINE_HANGING_SIGN.get(),
+            ModBlocks.PINE_WALL_HANGING_SIGN.get(),
+            Item.Properties().stacksTo(16)
+        )
     }
 
     fun register(eventBus: IEventBus) {

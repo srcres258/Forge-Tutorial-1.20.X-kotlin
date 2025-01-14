@@ -77,6 +77,9 @@ class ModItemModelProvider(
         simpleBlockItemBlockTexture(ModBlocks.CATMINT)
 
         withExistingParent(ModItems.RHINO_SPAWN_EGG.id.path, mcLoc("item/template_spawn_egg"))
+
+        simpleItem(ModItems.PINE_SIGN)
+        simpleItem(ModItems.PINE_HANGING_SIGN)
     }
 
     private fun trimmedArmorItem(itemRegObj: RegistryObject<out Item>) {

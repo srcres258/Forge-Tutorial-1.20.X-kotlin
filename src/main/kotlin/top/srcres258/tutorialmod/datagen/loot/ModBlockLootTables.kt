@@ -82,9 +82,22 @@ class ModBlockLootTables : BlockLootSubProvider(setOf(), FeatureFlags.REGISTRY.a
         dropSelf(ModBlocks.STRIPPED_PINE_WOOD.get())
         dropSelf(ModBlocks.PINE_PLANKS.get())
 
-        add(ModBlocks.PINE_LEAVES.get()) { blocks ->
+        add(ModBlocks.PINE_LEAVES.get()) { block ->
             // TODO: change SAPPHIRE_BLOCK to sapling when done
-            createLeavesDrops(blocks, ModBlocks.SAPPHIRE_BLOCK.get(), *NORMAL_LEAVES_SAPLING_CHANCES)
+            createLeavesDrops(block, ModBlocks.SAPPHIRE_BLOCK.get(), *NORMAL_LEAVES_SAPLING_CHANCES)
+        }
+
+        add(ModBlocks.PINE_SIGN.get()) {
+            createSingleItemTable(ModItems.PINE_SIGN.get())
+        }
+        add(ModBlocks.PINE_WALL_SIGN.get()) {
+            createSingleItemTable(ModItems.PINE_SIGN.get())
+        }
+        add(ModBlocks.PINE_HANGING_SIGN.get()) {
+            createSingleItemTable(ModItems.PINE_HANGING_SIGN.get())
+        }
+        add(ModBlocks.PINE_WALL_HANGING_SIGN.get()) {
+            createSingleItemTable(ModItems.PINE_HANGING_SIGN.get())
         }
     }
 

@@ -35,6 +35,7 @@ import top.srcres258.tutorialmod.TutorialMod
 import top.srcres258.tutorialmod.block.custom.*
 import top.srcres258.tutorialmod.item.ModItems
 import top.srcres258.tutorialmod.sound.ModSounds
+import top.srcres258.tutorialmod.util.ModWoodTypes
 
 object ModBlocks {
     val BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, TutorialMod.MOD_ID)
@@ -249,6 +250,32 @@ object ModBlocks {
                 direction: Direction?
             ) = 30
         }
+    }
+
+    val PINE_SIGN: RegistryObject<Block> = BLOCKS.register("pine_sign") {
+        ModStandingSignBlock(
+            BlockBehaviour.Properties.copy(Blocks.OAK_SIGN),
+            ModWoodTypes.PINE
+        )
+    }
+    val PINE_WALL_SIGN: RegistryObject<Block> = BLOCKS.register("pine_wall_sign") {
+        ModWallSignBlock(
+            BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN),
+            ModWoodTypes.PINE
+        )
+    }
+
+    val PINE_HANGING_SIGN: RegistryObject<Block> = BLOCKS.register("pine_hanging_sign") {
+        ModHangingSignBlock(
+            BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN),
+            ModWoodTypes.PINE
+        )
+    }
+    val PINE_WALL_HANGING_SIGN: RegistryObject<Block> = BLOCKS.register("pine_wall_hanging_sign") {
+        ModWallHangingSignBlock(
+            BlockBehaviour.Properties.copy(Blocks.OAK_WALL_HANGING_SIGN),
+            ModWoodTypes.PINE
+        )
     }
 
     private fun <T: Block> registerBlock(

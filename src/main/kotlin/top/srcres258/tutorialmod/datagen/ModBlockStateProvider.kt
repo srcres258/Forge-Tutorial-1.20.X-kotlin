@@ -100,7 +100,33 @@ class ModBlockStateProvider(
         blockWithItem(ModBlocks.PINE_PLANKS)
 
         leavesBlock(ModBlocks.PINE_LEAVES)
+
+        signBlock(
+            ModBlocks.PINE_SIGN.get() as StandingSignBlock,
+            ModBlocks.PINE_WALL_SIGN.get() as WallSignBlock,
+            blockTexture(ModBlocks.PINE_PLANKS.get())
+        )
+
+        hangingSignBlock(
+            ModBlocks.PINE_HANGING_SIGN.get(),
+            ModBlocks.PINE_WALL_HANGING_SIGN.get(),
+            blockTexture(ModBlocks.PINE_PLANKS.get())
+        )
     }
+
+    private fun hangingSignBlock(signBlock: Block, wallSignBlock: Block, texture: ResourceLocation) {
+        val sign = models().sign(name(signBlock), texture)
+        hangingSignBlock(signBlock, wallSignBlock, sign)
+    }
+
+    private fun hangingSignBlock(signBlock: Block, wallSignBlock: Block, sign: ModelFile) {
+        simpleBlock(signBlock, sign)
+        simpleBlock(wallSignBlock, sign)
+    }
+
+    private fun name(block: Block) = key(block)!!.path
+
+    private fun key(block: Block) = ForgeRegistries.BLOCKS.getKey(block)
 
     private fun leavesBlock(blockRegObj: RegistryObject<out Block>) =
         simpleBlockWithItem(
