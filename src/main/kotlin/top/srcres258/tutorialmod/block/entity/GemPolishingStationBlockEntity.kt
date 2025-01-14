@@ -3,6 +3,7 @@ package top.srcres258.tutorialmod.block.entity
 import net.minecraft.core.BlockPos
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.network.chat.Component
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket
 import net.minecraft.world.Containers
 import net.minecraft.world.MenuProvider
 import net.minecraft.world.SimpleContainer
@@ -30,7 +31,15 @@ class GemPolishingStationBlockEntity(
     pPos: BlockPos,
     pBlockState: BlockState
 ) : BlockEntity(ModBlockEntities.GEM_POLISHING_BE.get(), pPos, pBlockState), MenuProvider {
-    private val itemHandler = ItemStackHandler(2)
+    private val itemHandler = object : ItemStackHandler(2) {
+        override fun onContentsChanged(slot: Int) {
+            setChanged()
+            val level = level ?: return
+            if (!level.isClientSide) {
+                level.sendBlockUpdated(blockPos, blockState, blockState, 3)
+            }
+        }
+    }
     private var lazyItemHandler: LazyOptional<IItemHandler> = LazyOptional.empty()
 
     private val data = object : ContainerData {
@@ -51,6 +60,13 @@ class GemPolishingStationBlockEntity(
     }
     private var progress = 0
     private var maxProgress = 78
+
+    val renderStack: ItemStack
+        get() = if (itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty) {
+            itemHandler.getStackInSlot(INPUT_SLOT)
+        } else {
+            itemHandler.getStackInSlot(OUTPUT_SLOT)
+        }
 
     override fun <T : Any?> getCapability(cap: Capability<T>): LazyOptional<T> {
         if (cap == ForgeCapabilities.ITEM_HANDLER) {
@@ -163,4 +179,10 @@ class GemPolishingStationBlockEntity(
     private fun increaseCraftingProgress() {
         progress++
     }
+
+    override fun getUpdatePacket(): ClientboundBlockEntityDataPacket =
+        // NOTE: may **not** work for Minecraft 1.20.2 and higher.
+        ClientboundBlockEntityDataPacket.create(this)
+
+    override fun getUpdateTag(): CompoundTag = saveWithoutMetadata()
 }
