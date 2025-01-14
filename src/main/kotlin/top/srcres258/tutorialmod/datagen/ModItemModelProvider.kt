@@ -75,6 +75,8 @@ class ModItemModelProvider(
         trimmedArmorItem(ModItems.SAPPHIRE_BOOTS)
 
         simpleBlockItemBlockTexture(ModBlocks.CATMINT)
+
+        withExistingParent(ModItems.RHINO_SPAWN_EGG.id.path, mcLoc("item/template_spawn_egg"))
     }
 
     private fun trimmedArmorItem(itemRegObj: RegistryObject<out Item>) {

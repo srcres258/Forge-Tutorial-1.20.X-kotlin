@@ -9,12 +9,14 @@ import net.minecraft.world.item.PickaxeItem
 import net.minecraft.world.item.RecordItem
 import net.minecraft.world.item.ShovelItem
 import net.minecraft.world.item.SwordItem
+import net.minecraftforge.common.ForgeSpawnEggItem
 import net.minecraftforge.eventbus.api.IEventBus
 import net.minecraftforge.registries.DeferredRegister
 import net.minecraftforge.registries.ForgeRegistries
 import net.minecraftforge.registries.RegistryObject
 import top.srcres258.tutorialmod.TutorialMod
 import top.srcres258.tutorialmod.block.ModBlocks
+import top.srcres258.tutorialmod.entity.ModEntities
 import top.srcres258.tutorialmod.item.custom.FuelItem
 import top.srcres258.tutorialmod.item.custom.MetalDetectorItem
 import top.srcres258.tutorialmod.item.custom.ModArmorItem
@@ -88,6 +90,10 @@ object ModItems {
 
     val BAR_BRAWL_MUSIC_DISC: RegistryObject<Item> = ITEMS.register("bar_brawl_music_disc") {
         RecordItem(6, ModSounds.BAR_BRAWL, Item.Properties().stacksTo(1), 2440)
+    }
+
+    val RHINO_SPAWN_EGG: RegistryObject<Item> = ITEMS.register("rhino_spawn_egg") {
+        ForgeSpawnEggItem(ModEntities.RHINO, 0x7E9680, 0xC5D1C5, Item.Properties())
     }
 
     fun register(eventBus: IEventBus) {

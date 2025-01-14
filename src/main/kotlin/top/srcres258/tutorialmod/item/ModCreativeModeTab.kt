@@ -51,6 +51,8 @@ object ModCreativeModeTab {
 
                     output.accept(ModItems.BAR_BRAWL_MUSIC_DISC.get())
 
+                    output.accept(ModItems.RHINO_SPAWN_EGG.get())
+
                     // vanilla
                     output.accept(Items.DIAMOND)
                 }

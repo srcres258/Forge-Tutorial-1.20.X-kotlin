@@ -1,5 +1,6 @@
 package top.srcres258.tutorialmod
 
+import net.minecraft.client.renderer.entity.EntityRenderers
 import net.minecraft.world.item.CreativeModeTabs
 import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.FlowerPotBlock
@@ -16,6 +17,8 @@ import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import thedarkcolour.kotlinforforge.forge.MOD_BUS
 import top.srcres258.tutorialmod.block.ModBlocks
+import top.srcres258.tutorialmod.entity.ModEntities
+import top.srcres258.tutorialmod.entity.client.RhinoRenderer
 import top.srcres258.tutorialmod.item.ModCreativeModeTab
 import top.srcres258.tutorialmod.item.ModItems
 import top.srcres258.tutorialmod.loot.ModLootModifiers
@@ -45,6 +48,7 @@ object TutorialMod {
         ModLootModifiers.register(MOD_BUS)
         ModVillagers.register(MOD_BUS)
         ModSounds.register(MOD_BUS)
+        ModEntities.register(MOD_BUS)
 
         MOD_BUS.addListener(TutorialMod::commonSetup)
         MinecraftForge.EVENT_BUS.register(this)
@@ -73,7 +77,7 @@ object TutorialMod {
     object ClientModEvents {
         @SubscribeEvent
         fun onClientSetup(event: FMLClientSetupEvent) {
-
+            EntityRenderers.register(ModEntities.RHINO.get(), ::RhinoRenderer)
         }
     }
 }
