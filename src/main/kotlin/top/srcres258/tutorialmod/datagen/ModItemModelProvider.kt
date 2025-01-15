@@ -80,6 +80,9 @@ class ModItemModelProvider(
 
         simpleItem(ModItems.PINE_SIGN)
         simpleItem(ModItems.PINE_HANGING_SIGN)
+
+        simpleItem(ModItems.PINE_BOAT)
+        simpleItem(ModItems.PINE_CHEST_BOAT)
     }
 
     private fun trimmedArmorItem(itemRegObj: RegistryObject<out Item>) {

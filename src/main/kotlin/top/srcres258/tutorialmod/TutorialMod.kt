@@ -21,6 +21,7 @@ import thedarkcolour.kotlinforforge.forge.MOD_BUS
 import top.srcres258.tutorialmod.block.ModBlocks
 import top.srcres258.tutorialmod.block.entity.ModBlockEntities
 import top.srcres258.tutorialmod.entity.ModEntities
+import top.srcres258.tutorialmod.entity.client.ModBoatRenderer
 import top.srcres258.tutorialmod.entity.client.RhinoRenderer
 import top.srcres258.tutorialmod.item.ModCreativeModeTab
 import top.srcres258.tutorialmod.item.ModItems
@@ -90,6 +91,12 @@ object TutorialMod {
             Sheets.addWoodType(ModWoodTypes.PINE)
 
             EntityRenderers.register(ModEntities.RHINO.get(), ::RhinoRenderer)
+            EntityRenderers.register(ModEntities.MOD_BOAT.get()) { context ->
+                ModBoatRenderer(context, false)
+            }
+            EntityRenderers.register(ModEntities.MOD_CHEST_BOAT.get()) { context ->
+                ModBoatRenderer(context, true)
+            }
 
             MenuScreens.register(ModMenuTypes.GEM_POLISHING_MENU.get(), ::GemPolishingStationScreen)
         }

@@ -56,6 +56,9 @@ object ModCreativeModeTab {
                     output.accept(ModItems.PINE_SIGN.get())
                     output.accept(ModItems.PINE_HANGING_SIGN.get())
 
+                    output.accept(ModItems.PINE_BOAT.get())
+                    output.accept(ModItems.PINE_CHEST_BOAT.get())
+
                     // vanilla
                     output.accept(Items.DIAMOND)
                 }

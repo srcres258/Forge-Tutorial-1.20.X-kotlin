@@ -19,9 +19,11 @@ import net.minecraftforge.registries.RegistryObject
 import top.srcres258.tutorialmod.TutorialMod
 import top.srcres258.tutorialmod.block.ModBlocks
 import top.srcres258.tutorialmod.entity.ModEntities
+import top.srcres258.tutorialmod.entity.custom.ModBoatEntity
 import top.srcres258.tutorialmod.item.custom.FuelItem
 import top.srcres258.tutorialmod.item.custom.MetalDetectorItem
 import top.srcres258.tutorialmod.item.custom.ModArmorItem
+import top.srcres258.tutorialmod.item.custom.ModBoatItem
 import top.srcres258.tutorialmod.sound.ModSounds
 
 object ModItems {
@@ -111,6 +113,13 @@ object ModItems {
             ModBlocks.PINE_WALL_HANGING_SIGN.get(),
             Item.Properties().stacksTo(16)
         )
+    }
+
+    val PINE_BOAT: RegistryObject<Item> = ITEMS.register("pine_boat") {
+        ModBoatItem(false, ModBoatEntity.Type.PINE, Item.Properties())
+    }
+    val PINE_CHEST_BOAT: RegistryObject<Item> = ITEMS.register("pine_chest_boat") {
+        ModBoatItem(true, ModBoatEntity.Type.PINE, Item.Properties())
     }
 
     fun register(eventBus: IEventBus) {
