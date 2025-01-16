@@ -7,6 +7,7 @@ import net.minecraftforge.registries.DeferredRegister
 import net.minecraftforge.registries.ForgeRegistries
 import net.minecraftforge.registries.RegistryObject
 import top.srcres258.tutorialmod.TutorialMod
+import top.srcres258.tutorialmod.entity.custom.DiceProjectileEntity
 import top.srcres258.tutorialmod.entity.custom.ModBoatEntity
 import top.srcres258.tutorialmod.entity.custom.ModChestBoatEntity
 import top.srcres258.tutorialmod.entity.custom.RhinoEntity
@@ -33,6 +34,13 @@ object ModEntities {
             EntityType.Builder.of(::ModChestBoatEntity, MobCategory.MISC)
                 .sized(1.375F, 0.5625F)
                 .build("mod_chest_boat")
+        }
+
+    val DICE_PROJECTILE: RegistryObject<EntityType<DiceProjectileEntity>> =
+        ENTITY_TYPES.register("dice_projectile") {
+            EntityType.Builder.of(::DiceProjectileEntity, MobCategory.MISC)
+                .sized(0.5F, 0.5F)
+                .build("dice_projectile")
         }
 
     fun register(eventBus: IEventBus) {

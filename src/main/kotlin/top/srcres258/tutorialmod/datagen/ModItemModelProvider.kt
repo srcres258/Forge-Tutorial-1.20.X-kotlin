@@ -83,6 +83,8 @@ class ModItemModelProvider(
 
         simpleItem(ModItems.PINE_BOAT)
         simpleItem(ModItems.PINE_CHEST_BOAT)
+
+        simpleItem(ModItems.DICE)
     }
 
     private fun trimmedArmorItem(itemRegObj: RegistryObject<out Item>) {

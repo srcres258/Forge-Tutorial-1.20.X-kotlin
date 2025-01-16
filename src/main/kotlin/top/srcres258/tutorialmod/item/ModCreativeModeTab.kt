@@ -59,6 +59,8 @@ object ModCreativeModeTab {
                     output.accept(ModItems.PINE_BOAT.get())
                     output.accept(ModItems.PINE_CHEST_BOAT.get())
 
+                    output.accept(ModItems.DICE.get())
+
                     // vanilla
                     output.accept(Items.DIAMOND)
                 }

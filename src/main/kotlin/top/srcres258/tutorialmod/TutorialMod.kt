@@ -3,6 +3,7 @@ package top.srcres258.tutorialmod
 import net.minecraft.client.gui.screens.MenuScreens
 import net.minecraft.client.renderer.Sheets
 import net.minecraft.client.renderer.entity.EntityRenderers
+import net.minecraft.client.renderer.entity.ThrownItemRenderer
 import net.minecraft.world.item.CreativeModeTabs
 import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.FlowerPotBlock
@@ -97,6 +98,8 @@ object TutorialMod {
             EntityRenderers.register(ModEntities.MOD_CHEST_BOAT.get()) { context ->
                 ModBoatRenderer(context, true)
             }
+
+            EntityRenderers.register(ModEntities.DICE_PROJECTILE.get(), ::ThrownItemRenderer)
 
             MenuScreens.register(ModMenuTypes.GEM_POLISHING_MENU.get(), ::GemPolishingStationScreen)
         }

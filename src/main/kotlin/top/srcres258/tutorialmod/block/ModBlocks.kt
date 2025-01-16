@@ -278,6 +278,10 @@ object ModBlocks {
         )
     }
 
+    val DICE_BLOCK: RegistryObject<Block> = BLOCKS.register("dice_block") {
+        DiceBlock(BlockBehaviour.Properties.copy(Blocks.STONE).noLootTable())
+    }
+
     private fun <T: Block> registerBlock(
         name: String,
         block: () -> T
