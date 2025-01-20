@@ -33,6 +33,7 @@ import top.srcres258.tutorialmod.screen.ModMenuTypes
 import top.srcres258.tutorialmod.sound.ModSounds
 import top.srcres258.tutorialmod.util.ModWoodTypes
 import top.srcres258.tutorialmod.villager.ModVillagers
+import top.srcres258.tutorialmod.worldgen.tree.ModTrunkPlacerTypes
 
 /**
  * Main mod class. Should be an `object` declaration annotated with `@Mod`.
@@ -51,20 +52,23 @@ object TutorialMod {
     init {
         LOGGER.log(Level.INFO, "Hello world!")
 
-        ModCreativeModeTab.register(MOD_BUS)
-        ModItems.register(MOD_BUS)
-        ModBlocks.register(MOD_BUS)
-        ModLootModifiers.register(MOD_BUS)
-        ModVillagers.register(MOD_BUS)
-        ModSounds.register(MOD_BUS)
-        ModEntities.register(MOD_BUS)
-        ModBlockEntities.register(MOD_BUS)
-        ModMenuTypes.register(MOD_BUS)
-        ModRecipes.register(MOD_BUS)
+        MOD_BUS.let { bus ->
+            ModCreativeModeTab.register(bus)
+            ModItems.register(bus)
+            ModBlocks.register(bus)
+            ModLootModifiers.register(bus)
+            ModVillagers.register(bus)
+            ModSounds.register(bus)
+            ModEntities.register(bus)
+            ModBlockEntities.register(bus)
+            ModMenuTypes.register(bus)
+            ModRecipes.register(bus)
+            ModTrunkPlacerTypes.register(bus)
 
-        MOD_BUS.addListener(TutorialMod::commonSetup)
-        MinecraftForge.EVENT_BUS.register(this)
-        MOD_BUS.addListener(TutorialMod::addCreative)
+            bus.addListener(TutorialMod::commonSetup)
+            MinecraftForge.EVENT_BUS.register(this)
+            bus.addListener(TutorialMod::addCreative)
+        }
     }
 
     private fun commonSetup(event: FMLCommonSetupEvent) {

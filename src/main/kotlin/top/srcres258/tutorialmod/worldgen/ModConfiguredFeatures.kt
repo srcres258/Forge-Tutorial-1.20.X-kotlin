@@ -15,11 +15,11 @@ import net.minecraft.world.level.levelgen.feature.configurations.TreeConfigurati
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider
-import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest
 import top.srcres258.tutorialmod.TutorialMod
 import top.srcres258.tutorialmod.block.ModBlocks
+import top.srcres258.tutorialmod.worldgen.tree.custom.PineTrunkPlacer
 
 object ModConfiguredFeatures {
     val OVERWORLD_SAPPHIRE_ORE_KEY: ResourceKey<ConfiguredFeature<*, *>> = registerKey("sapphire_ore")
@@ -79,7 +79,7 @@ object ModConfiguredFeatures {
             TreeConfiguration.TreeConfigurationBuilder(
                 // configuration on tree blocks
                 BlockStateProvider.simple(ModBlocks.PINE_LOG.get()),
-                StraightTrunkPlacer(5, 4, 3),
+                PineTrunkPlacer(5, 4, 3),
 
                 // configuration on leave blocks
                 BlockStateProvider.simple(ModBlocks.PINE_LEAVES.get()),
