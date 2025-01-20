@@ -9,24 +9,29 @@ import top.srcres258.tutorialmod.TutorialMod
 object DataGenerators {
     @SubscribeEvent
     fun gatherData(event: GatherDataEvent) {
-        val generator = event.generator
-        val packOutput = generator.packOutput
         val existingFileHelper = event.existingFileHelper
         val lookupProvider = event.lookupProvider
 
-        generator.addProvider(event.includeServer(), ModRecipeProvider(packOutput))
-        generator.addProvider(event.includeServer(), ModLootTableProvider.create(packOutput))
+        event.generator.run {
+            addProvider(event.includeServer(), ModRecipeProvider(packOutput))
+            addProvider(event.includeServer(), ModLootTableProvider.create(packOutput))
 
-        generator.addProvider(event.includeClient(), ModBlockStateProvider(packOutput, existingFileHelper))
-        generator.addProvider(event.includeClient(), ModItemModelProvider(packOutput, existingFileHelper))
+            addProvider(event.includeClient(), ModBlockStateProvider(packOutput, existingFileHelper))
+            addProvider(event.includeClient(), ModItemModelProvider(packOutput, existingFileHelper))
 
-        val blockTagGenerator = generator.addProvider(event.includeServer(),
-            ModBlockTagGenerator(packOutput, lookupProvider, existingFileHelper))
-        generator.addProvider(event.includeServer(), ModItemTagGenerator(packOutput, lookupProvider,
-            blockTagGenerator.contentsGetter(), existingFileHelper))
+            addProvider(
+                event.includeServer(),
+                ModBlockTagGenerator(packOutput, lookupProvider, existingFileHelper)
+            ).let {
+                addProvider(event.includeServer(), ModItemTagGenerator(packOutput, lookupProvider,
+                    it.contentsGetter(), existingFileHelper))
+            }
 
-        generator.addProvider(event.includeServer(), ModGlobalLootModifiersProvider(packOutput))
-        generator.addProvider(event.includeServer(), ModPoiTypeTagsProvider(packOutput, lookupProvider,
-            existingFileHelper))
+            addProvider(event.includeServer(), ModGlobalLootModifiersProvider(packOutput))
+            addProvider(event.includeServer(), ModPoiTypeTagsProvider(packOutput, lookupProvider,
+                existingFileHelper))
+
+            addProvider(event.includeServer(), ModWorldGenProvider(packOutput, lookupProvider))
+        }
     }
 }
