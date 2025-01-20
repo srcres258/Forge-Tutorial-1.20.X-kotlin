@@ -19,88 +19,92 @@ object ModCreativeModeTab {
             .icon { ItemStack(ModItems.SAPPHIRE.get()) }
             .title(Component.translatable("creativetab.tutorial_tab"))
             .displayItems { _, output ->
-                // items
-                run {
-                    // mod
-                    output.accept(ModItems.SAPPHIRE.get())
-                    output.accept(ModItems.RAW_SAPPHIRE.get())
+                output.run {
+                    // items
+                    ModItems.run {
+                        // mod
+                        accept(SAPPHIRE.get())
+                        accept(RAW_SAPPHIRE.get())
 
-                    output.accept(ModItems.METAL_DETECTOR.get())
+                        accept(METAL_DETECTOR.get())
 
-                    output.accept(ModItems.STRAWBERRY.get())
+                        accept(STRAWBERRY.get())
 
-                    output.accept(ModItems.PINE_CONE.get())
+                        accept(PINE_CONE.get())
 
-                    output.accept(ModItems.SAPPHIRE_STAFF.get())
+                        accept(SAPPHIRE_STAFF.get())
 
-                    output.accept(ModItems.SAPPHIRE_SWORD.get())
-                    output.accept(ModItems.SAPPHIRE_PICKAXE.get())
-                    output.accept(ModItems.SAPPHIRE_AXE.get())
-                    output.accept(ModItems.SAPPHIRE_SHOVEL.get())
-                    output.accept(ModItems.SAPPHIRE_HOE.get())
+                        accept(SAPPHIRE_SWORD.get())
+                        accept(SAPPHIRE_PICKAXE.get())
+                        accept(SAPPHIRE_AXE.get())
+                        accept(SAPPHIRE_SHOVEL.get())
+                        accept(SAPPHIRE_HOE.get())
 
-                    output.accept(ModItems.SAPPHIRE_HELMET.get())
-                    output.accept(ModItems.SAPPHIRE_CHESTPLATE.get())
-                    output.accept(ModItems.SAPPHIRE_LEGGINGS.get())
-                    output.accept(ModItems.SAPPHIRE_BOOTS.get())
+                        accept(SAPPHIRE_HELMET.get())
+                        accept(SAPPHIRE_CHESTPLATE.get())
+                        accept(SAPPHIRE_LEGGINGS.get())
+                        accept(SAPPHIRE_BOOTS.get())
 
-                    output.accept(ModItems.STRAWBERRY_SEEDS.get())
+                        accept(STRAWBERRY_SEEDS.get())
 
-                    output.accept(ModItems.CORN_SEEDS.get())
-                    output.accept(ModItems.CORN.get())
+                        accept(CORN_SEEDS.get())
+                        accept(CORN.get())
 
-                    output.accept(ModItems.BAR_BRAWL_MUSIC_DISC.get())
+                        accept(BAR_BRAWL_MUSIC_DISC.get())
 
-                    output.accept(ModItems.RHINO_SPAWN_EGG.get())
+                        accept(RHINO_SPAWN_EGG.get())
 
-                    output.accept(ModItems.PINE_SIGN.get())
-                    output.accept(ModItems.PINE_HANGING_SIGN.get())
+                        accept(PINE_SIGN.get())
+                        accept(PINE_HANGING_SIGN.get())
 
-                    output.accept(ModItems.PINE_BOAT.get())
-                    output.accept(ModItems.PINE_CHEST_BOAT.get())
+                        accept(PINE_BOAT.get())
+                        accept(PINE_CHEST_BOAT.get())
 
-                    output.accept(ModItems.DICE.get())
+                        accept(DICE.get())
 
-                    // vanilla
-                    output.accept(Items.DIAMOND)
-                }
+                        // vanilla
+                        accept(Items.DIAMOND)
+                    }
 
-                // blocks
-                run {
-                    output.accept(ModBlocks.SAPPHIRE_BLOCK.get())
-                    output.accept(ModBlocks.RAW_SAPPHIRE_BLOCK.get())
+                    // blocks
+                    ModBlocks.run {
+                        accept(SAPPHIRE_BLOCK.get())
+                        accept(RAW_SAPPHIRE_BLOCK.get())
 
-                    output.accept(ModBlocks.SAPPHIRE_ORE.get())
-                    output.accept(ModBlocks.DEEPSLATE_SAPPHIRE_ORE.get())
-                    output.accept(ModBlocks.NETHER_SAPPHIRE_ORE.get())
-                    output.accept(ModBlocks.END_STONE_SAPPHIRE_ORE.get())
+                        accept(SAPPHIRE_ORE.get())
+                        accept(DEEPSLATE_SAPPHIRE_ORE.get())
+                        accept(NETHER_SAPPHIRE_ORE.get())
+                        accept(END_STONE_SAPPHIRE_ORE.get())
 
-                    output.accept(ModBlocks.SOUND_BLOCK.get())
+                        accept(SOUND_BLOCK.get())
 
-                    output.accept(ModBlocks.SAPPHIRE_STAIRS.get())
-                    output.accept(ModBlocks.SAPPHIRE_SLAB.get())
+                        accept(SAPPHIRE_STAIRS.get())
+                        accept(SAPPHIRE_SLAB.get())
 
-                    output.accept(ModBlocks.SAPPHIRE_BUTTON.get())
-                    output.accept(ModBlocks.SAPPHIRE_PRESSURE_PLATE.get())
+                        accept(SAPPHIRE_BUTTON.get())
+                        accept(SAPPHIRE_PRESSURE_PLATE.get())
 
-                    output.accept(ModBlocks.SAPPHIRE_FENCE.get())
-                    output.accept(ModBlocks.SAPPHIRE_FENCE_GATE.get())
-                    output.accept(ModBlocks.SAPPHIRE_WALL.get())
+                        accept(SAPPHIRE_FENCE.get())
+                        accept(SAPPHIRE_FENCE_GATE.get())
+                        accept(SAPPHIRE_WALL.get())
 
-                    output.accept(ModBlocks.SAPPHIRE_DOOR.get())
-                    output.accept(ModBlocks.SAPPHIRE_TRAPDOOR.get())
+                        accept(SAPPHIRE_DOOR.get())
+                        accept(SAPPHIRE_TRAPDOOR.get())
 
-                    output.accept(ModBlocks.CATMINT.get())
+                        accept(CATMINT.get())
 
-                    output.accept(ModBlocks.GEM_POLISHING_STATION.get())
+                        accept(GEM_POLISHING_STATION.get())
 
-                    output.accept(ModBlocks.PINE_LOG.get())
-                    output.accept(ModBlocks.PINE_WOOD.get())
-                    output.accept(ModBlocks.STRIPPED_PINE_LOG.get())
-                    output.accept(ModBlocks.STRIPPED_PINE_WOOD.get())
+                        accept(PINE_LOG.get())
+                        accept(PINE_WOOD.get())
+                        accept(STRIPPED_PINE_LOG.get())
+                        accept(STRIPPED_PINE_WOOD.get())
 
-                    output.accept(ModBlocks.PINE_PLANKS.get())
-                    output.accept(ModBlocks.PINE_LEAVES.get())
+                        accept(PINE_PLANKS.get())
+                        accept(PINE_LEAVES.get())
+
+                        accept(PINE_SAPLING.get())
+                    }
                 }
             }
             .build()

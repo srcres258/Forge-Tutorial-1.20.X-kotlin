@@ -83,8 +83,7 @@ class ModBlockLootTables : BlockLootSubProvider(setOf(), FeatureFlags.REGISTRY.a
         dropSelf(ModBlocks.PINE_PLANKS.get())
 
         add(ModBlocks.PINE_LEAVES.get()) { block ->
-            // TODO: change SAPPHIRE_BLOCK to sapling when done
-            createLeavesDrops(block, ModBlocks.SAPPHIRE_BLOCK.get(), *NORMAL_LEAVES_SAPLING_CHANCES)
+            createLeavesDrops(block, ModBlocks.PINE_SAPLING.get(), *NORMAL_LEAVES_SAPLING_CHANCES)
         }
 
         add(ModBlocks.PINE_SIGN.get()) {
@@ -99,6 +98,8 @@ class ModBlockLootTables : BlockLootSubProvider(setOf(), FeatureFlags.REGISTRY.a
         add(ModBlocks.PINE_WALL_HANGING_SIGN.get()) {
             createSingleItemTable(ModItems.PINE_HANGING_SIGN.get())
         }
+
+        dropSelf(ModBlocks.PINE_SAPLING.get())
     }
 
     private fun createCopperLikeOreDrops(block: Block, item: Item) =

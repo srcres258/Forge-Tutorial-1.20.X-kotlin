@@ -85,7 +85,18 @@ class ModItemModelProvider(
         simpleItem(ModItems.PINE_CHEST_BOAT)
 
         simpleItem(ModItems.DICE)
+
+        saplingItem(ModBlocks.PINE_SAPLING)
     }
+
+    private fun saplingItem(item: RegistryObject<out Block>) =
+        withExistingParent(
+            item.id.path,
+            ResourceLocation("item/generated")
+        ).texture(
+            "layer0",
+            ResourceLocation(TutorialMod.MOD_ID, "block/${item.id.path}")
+        )
 
     private fun trimmedArmorItem(itemRegObj: RegistryObject<out Item>) {
         val MOD_ID = TutorialMod.MOD_ID

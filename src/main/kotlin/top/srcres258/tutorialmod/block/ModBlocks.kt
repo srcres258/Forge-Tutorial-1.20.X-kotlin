@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.FlowerBlock
 import net.minecraft.world.level.block.FlowerPotBlock
 import net.minecraft.world.level.block.LeavesBlock
 import net.minecraft.world.level.block.PressurePlateBlock
+import net.minecraft.world.level.block.SaplingBlock
 import net.minecraft.world.level.block.SlabBlock
 import net.minecraft.world.level.block.SoundType
 import net.minecraft.world.level.block.StairBlock
@@ -36,6 +37,7 @@ import top.srcres258.tutorialmod.block.custom.*
 import top.srcres258.tutorialmod.item.ModItems
 import top.srcres258.tutorialmod.sound.ModSounds
 import top.srcres258.tutorialmod.util.ModWoodTypes
+import top.srcres258.tutorialmod.worldgen.tree.PineTreeGrower
 
 object ModBlocks {
     val BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, TutorialMod.MOD_ID)
@@ -280,6 +282,10 @@ object ModBlocks {
 
     val DICE_BLOCK: RegistryObject<Block> = BLOCKS.register("dice_block") {
         DiceBlock(BlockBehaviour.Properties.copy(Blocks.STONE).noLootTable())
+    }
+
+    val PINE_SAPLING: RegistryObject<Block> = registerBlock("pine_sapling") {
+        SaplingBlock(PineTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING))
     }
 
     private fun <T: Block> registerBlock(

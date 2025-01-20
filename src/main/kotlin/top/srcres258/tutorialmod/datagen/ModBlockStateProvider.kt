@@ -112,6 +112,17 @@ class ModBlockStateProvider(
             ModBlocks.PINE_WALL_HANGING_SIGN.get(),
             blockTexture(ModBlocks.PINE_PLANKS.get())
         )
+        saplingBlock(ModBlocks.PINE_SAPLING)
+    }
+
+    private fun saplingBlock(blockRegObj: RegistryObject<out Block>) {
+        simpleBlock(
+            blockRegObj.get(),
+            models().cross(
+                ForgeRegistries.BLOCKS.getKey(blockRegObj.get())!!.path,
+                blockTexture(blockRegObj.get())
+            ).renderType("cutout")
+        )
     }
 
     private fun hangingSignBlock(signBlock: Block, wallSignBlock: Block, texture: ResourceLocation) {
