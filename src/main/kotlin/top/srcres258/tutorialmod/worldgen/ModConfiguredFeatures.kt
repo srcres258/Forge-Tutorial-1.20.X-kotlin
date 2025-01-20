@@ -13,12 +13,12 @@ import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfigur
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize
-import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest
 import top.srcres258.tutorialmod.TutorialMod
 import top.srcres258.tutorialmod.block.ModBlocks
+import top.srcres258.tutorialmod.worldgen.tree.custom.PineFoliagePlacer
 import top.srcres258.tutorialmod.worldgen.tree.custom.PineTrunkPlacer
 
 object ModConfiguredFeatures {
@@ -83,7 +83,7 @@ object ModConfiguredFeatures {
 
                 // configuration on leave blocks
                 BlockStateProvider.simple(ModBlocks.PINE_LEAVES.get()),
-                BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(2), 3),
+                PineFoliagePlacer(ConstantInt.of(3), ConstantInt.of(2), 3),
 
                 // size of the feature
                 TwoLayersFeatureSize(1, 0, 2)

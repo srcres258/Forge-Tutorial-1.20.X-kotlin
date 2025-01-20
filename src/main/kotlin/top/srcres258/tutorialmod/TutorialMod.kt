@@ -33,6 +33,7 @@ import top.srcres258.tutorialmod.screen.ModMenuTypes
 import top.srcres258.tutorialmod.sound.ModSounds
 import top.srcres258.tutorialmod.util.ModWoodTypes
 import top.srcres258.tutorialmod.villager.ModVillagers
+import top.srcres258.tutorialmod.worldgen.tree.ModFoliagePlacers
 import top.srcres258.tutorialmod.worldgen.tree.ModTrunkPlacerTypes
 
 /**
@@ -64,6 +65,7 @@ object TutorialMod {
             ModMenuTypes.register(bus)
             ModRecipes.register(bus)
             ModTrunkPlacerTypes.register(bus)
+            ModFoliagePlacers.register(bus)
 
             bus.addListener(TutorialMod::commonSetup)
             MinecraftForge.EVENT_BUS.register(this)
