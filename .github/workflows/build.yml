@@ -18,8 +18,5 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Build with Gradle
-        run: ./gradlew build
-
       - name: Build with Gradle - Generate Mod Data
         run: ./gradlew runData
