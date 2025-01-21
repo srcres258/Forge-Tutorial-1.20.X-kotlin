@@ -104,6 +104,8 @@ object ModCreativeModeTab {
                         accept(PINE_LEAVES.get())
 
                         accept(PINE_SAPLING.get())
+
+                        accept(MOD_PORTAL.get())
                     }
                 }
             }

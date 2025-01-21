@@ -288,6 +288,15 @@ object ModBlocks {
         SaplingBlock(PineTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING))
     }
 
+    val MOD_PORTAL: RegistryObject<Block> = registerBlock("mod_portal") {
+        ModPortalBlock(
+            BlockBehaviour.Properties.copy(Blocks.STONE)
+                .noLootTable()
+                .noOcclusion()
+                .noCollission()
+        )
+    }
+
     private fun <T: Block> registerBlock(
         name: String,
         block: () -> T

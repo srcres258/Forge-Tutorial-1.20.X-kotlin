@@ -113,6 +113,8 @@ class ModBlockStateProvider(
             blockTexture(ModBlocks.PINE_PLANKS.get())
         )
         saplingBlock(ModBlocks.PINE_SAPLING)
+
+        blockWithItem(ModBlocks.MOD_PORTAL)
     }
 
     private fun saplingBlock(blockRegObj: RegistryObject<out Block>) {
