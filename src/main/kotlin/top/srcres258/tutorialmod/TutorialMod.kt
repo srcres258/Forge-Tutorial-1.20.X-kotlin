@@ -18,6 +18,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent
 import org.apache.logging.log4j.Level
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
+import terrablender.api.SurfaceRuleManager
 import thedarkcolour.kotlinforforge.forge.MOD_BUS
 import top.srcres258.tutorialmod.block.ModBlocks
 import top.srcres258.tutorialmod.block.entity.ModBlockEntities
@@ -33,6 +34,8 @@ import top.srcres258.tutorialmod.screen.ModMenuTypes
 import top.srcres258.tutorialmod.sound.ModSounds
 import top.srcres258.tutorialmod.util.ModWoodTypes
 import top.srcres258.tutorialmod.villager.ModVillagers
+import top.srcres258.tutorialmod.worldgen.biome.ModTerraBlender
+import top.srcres258.tutorialmod.worldgen.biome.surface.ModSurfaceRules
 import top.srcres258.tutorialmod.worldgen.tree.ModFoliagePlacers
 import top.srcres258.tutorialmod.worldgen.tree.ModTrunkPlacerTypes
 
@@ -66,6 +69,7 @@ object TutorialMod {
             ModRecipes.register(bus)
             ModTrunkPlacerTypes.register(bus)
             ModFoliagePlacers.register(bus)
+            ModTerraBlender.registerBiomes()
 
             bus.addListener(TutorialMod::commonSetup)
             MinecraftForge.EVENT_BUS.register(this)
@@ -76,6 +80,9 @@ object TutorialMod {
     private fun commonSetup(event: FMLCommonSetupEvent) {
         event.enqueueWork {
             (Blocks.FLOWER_POT as FlowerPotBlock).addPlant(ModBlocks.CATMINT.id, ModBlocks.POTTED_CATMINT)
+
+            SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID,
+                ModSurfaceRules.makeRules())
         }
     }
 

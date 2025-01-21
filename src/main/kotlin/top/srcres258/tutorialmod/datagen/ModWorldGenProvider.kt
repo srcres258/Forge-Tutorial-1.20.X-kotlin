@@ -10,6 +10,7 @@ import top.srcres258.tutorialmod.TutorialMod
 import top.srcres258.tutorialmod.worldgen.ModBiomeModifiers
 import top.srcres258.tutorialmod.worldgen.ModConfiguredFeatures
 import top.srcres258.tutorialmod.worldgen.ModPlacedFeatures
+import top.srcres258.tutorialmod.worldgen.biome.ModBiomes
 import java.util.concurrent.CompletableFuture
 
 class ModWorldGenProvider(
@@ -26,5 +27,6 @@ class ModWorldGenProvider(
             .add(Registries.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap)
             .add(Registries.PLACED_FEATURE, ModPlacedFeatures::bootstrap)
             .add(ForgeRegistries.Keys.BIOME_MODIFIERS, ModBiomeModifiers::bootstrap)
+            .add(Registries.BIOME, ModBiomes::bootstrap)
     }
 }
